@@ -1,0 +1,9 @@
+.page{max-width:1720px;width:96%}
+.ashen{--paper:#242522;--ink:#f0debb;--muted:#b6ae9c;--line:#514637;--green:#815136}
+.ashen .guardian-panel,.ashen .wave-panel,.ashen .resources{background:#302e26;border-color:#65523c}
+.ashen .card-copy{background:#39362b}.ashen .tower-card{background:#383c30}.ashen .arena{border-color:#6e4b32}
+.ashen .guardian-copy>p,.ashen .wave-description{color:#c4b9a0}.ashen dialog{background:#302e26}
+.ashen .portrait-halo{opacity:.25}.ashen .wave-button{background:#65432c;color:#ffedca}
+.ashen #powerBadge{background:#493e2a;color:#ffedca}
+button:focus-visible,a:focus-visible{outline:3px solid #b78432;outline-offset:4px}
+@media(max-width:600px){.masthead{flex-wrap:wrap;gap:14px}.masthead nav{flex-wrap:wrap;gap:12px}.page{width:94%}.route-label{display:none}}

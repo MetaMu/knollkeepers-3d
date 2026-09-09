@@ -1,0 +1,9 @@
+# Forest Knoll asset credits
+
+The five gnome characters and original Cock Nibble design were supplied by the user. New Nemesis base, Hulk, Venom and King full-body renders, and the Forest Knoll board, were generated with OpenAI ImageGen from the supplied character references. The source PNGs are preserved; sprite.js removes magenta at runtime. These are raster renders, not mesh models.
+
+The board direction includes a winding woodland trail, hollow oak cottage, mushroom homes, lantern fences, a pond, rune stones and a golden pear shrine. Forest leaf photographic reference: Rob Tuytel / Poly Haven, https://polyhaven.com/a/forest_leaves_02 . Local file: forest-floor.jpg. Additional path texture: https://polyhaven.com/a/forrest_sand_01 , local file forest-path.jpg. Both downloaded diffuse textures are CC0: https://polyhaven.com/license . No website preview images or logos were reused.
+
+Generated source IDs: base e64bb34e-8f76-4f70-bbd3-775d5b2a1382; Hulk 597dd9a8-85bd-4eaa-8f14-11b3a85bf7e4; King 6519615e-f729-4ce7-ad17-088352611ed3; Venom 2bd5bff9-11d9-4eda-a555-e8d7879cdf14; board 3c70ae0b-0b93-4605-9940-1b1f8d06c0ec.
+
+The expanded Forest Knoll, Ashen Knoll, eight four-frame walk sheets (four original and four mutated identities) were generated with OpenAI ImageGen from the supplied references. Release WebP files are lossless encodings of the PNG artwork. Audio licenses and sources are documented in audio/CREDITS.md. User-supplied design distribution rights must be confirmed by the project owner before publication.
