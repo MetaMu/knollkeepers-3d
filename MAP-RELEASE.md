@@ -1,5 +1,9 @@
 # 3D forest map — 2026-09-12
 
+## Copper-wrapped shrine hut
+
+Expanded the pear shrine into a 3.55-unit-tall open-front hut (guardians are 1.65 units tall). Plain side and rear walls, an arched roof, braided copper post bindings, roof bands and spiral wirework frame the existing Golden Asian Pear centerpiece. No interior gameplay, interior-detail pass or camera-entry mode was added. Shrine exterior camera framing was widened for the larger silhouette. No paid assets or generation.
+
 ## Garden interaction and shrine revision
 
 Fixed the status refresh overwriting projected 3D click positions with old 2D coordinates. Occupied and empty markers now share a centered transform, have visible numbers and a 30–70px target. Braided magical vines frame each knoll. Camera now permits 360-degree orbit, lower angles, closer zoom and panning; Trail view looks toward incoming enemies, Shrine provides a close view, Reset view returns to the overview.

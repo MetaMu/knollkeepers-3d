@@ -38,5 +38,22 @@ export function pearShrine(scene,position){
  const speckles=new T.InstancedMesh(new T.SphereGeometry(.009,4,3),bronze,150),d=new T.Object3D();for(let i=0;i<150;i++){const v=1-2*(i+.5)/150,a=i*2.39996,r=Math.sqrt(1-v*v);d.position.set(Math.cos(a)*r*.541,1.12+v*.472,Math.sin(a)*r*.521);d.updateMatrix();speckles.setMatrixAt(i,d.matrix);}shrine.add(speckles);
  for(const side of [-1,1]){const points=[];for(let j=0;j<=40;j++){const a=j/40*Math.PI*5;points.push(new T.Vector3(side*.7+Math.cos(a)*.1,.5+j/40*.7,Math.sin(a)*.1));}shrine.add(tube(points,.025,copper));mesh(new T.SphereGeometry(.09,10,8),glow,side*.7,1.25,0);}
  const dial=mesh(new T.CylinderGeometry(.16,.16,.07,24),bronze,0,.35,.74);dial.rotation.x=Math.PI/2;const face=mesh(new T.CircleGeometry(.125,24),new T.MeshStandardMaterial({color:0xf5e4b7}),0,.35,.782);const needle=mesh(new T.BoxGeometry(.013,.09,.008),copper,.025,.38,.79);needle.rotation.z=-.6;
- shrine.position.copy(position);scene.add(shrine);return shrine;
+ // A visibly open sanctuary, with a plain interior and exterior wire-wrapped adornment.
+ const wood=new T.MeshStandardMaterial({color:0x354638,roughness:.95,side:T.DoubleSide});
+ mesh(new T.BoxGeometry(2.8,.15,2.35),bronze,0,.04,.3);
+ mesh(new T.BoxGeometry(2.65,2.25,.12),wood,0,1.2,-.8);
+ for(const side of [-1,1]){
+  mesh(new T.BoxGeometry(.12,2.25,2.2),wood,side*1.28,1.2,.3);
+  mesh(new T.CylinderGeometry(.12,.17,2.4,12),bronze,side*1.2,1.25,1.35);
+  // Three strands wrap each post like a copper-bound carved staff.
+  for(let strand=0;strand<3;strand++){const pts=[];for(let j=0;j<=64;j++){const t=j/64,a=t*Math.PI*9+strand*Math.PI*2/3;pts.push(new T.Vector3(side*1.2+Math.cos(a)*.17,.15+t*2.28,1.35+Math.sin(a)*.17));}shrine.add(tube(pts,.024,copper));}
+  for(let curl=0;curl<3;curl++){const pts=[];for(let j=0;j<=48;j++){const t=j/48,a=t*Math.PI*4,r=.27*(1-t)+.015;pts.push(new T.Vector3(side*(1.0+Math.cos(a)*r),.65+curl*.64+Math.sin(a)*r,1.55));}shrine.add(tube(pts,.025,copper));}
+ }
+ const roofShape=new T.Shape();roofShape.moveTo(-1.55,2.35);roofShape.quadraticCurveTo(-.8,3.35,0,3.55);roofShape.quadraticCurveTo(.8,3.35,1.55,2.35);roofShape.lineTo(1.4,2.32);roofShape.quadraticCurveTo(.7,3.17,0,3.37);roofShape.quadraticCurveTo(-.7,3.17,-1.4,2.32);roofShape.closePath();
+ mesh(new T.ExtrudeGeometry(roofShape,{depth:2.6,bevelEnabled:false,curveSegments:16}),wood,0,0,-.95);
+ for(let strand=0;strand<4;strand++){const pts=[];for(let j=0;j<=48;j++){const t=j/48,x=-1.53+t*3.06,y=2.36+1.15*Math.sin(t*Math.PI);pts.push(new T.Vector3(x,y+Math.sin(t*Math.PI*12+strand)*.035,1.67+strand*.028));}shrine.add(tube(pts,.025,copper));}
+ // Copper loops embrace the roof as wire wrapping embraces a polished stone.
+ for(let band=0;band<5;band++){const pts=[];for(let j=0;j<=48;j++){const t=j/48,x=-1.52+t*3.04;pts.push(new T.Vector3(x,2.39+1.15*Math.sin(t*Math.PI),-.8+band*.57));}shrine.add(tube(pts,.026,copper));}
+ const crest=[];for(let j=0;j<=48;j++){const t=j/48,a=t*Math.PI*4,r=.29*(1-t);crest.push(new T.Vector3(Math.cos(a)*r,3.64+Math.sin(a)*r,1.7));}shrine.add(tube(crest,.03,copper));
+ shrine.name='Copper-wrapped pear sanctuary';shrine.position.copy(position);scene.add(shrine);return shrine;
 }
