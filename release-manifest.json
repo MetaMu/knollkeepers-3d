@@ -1,10 +1,15 @@
 {
-  "version": "knoll-keepers-3d-1.2.2-magic",
+  "version": "knoll-keepers-3d-1.2.3-balance",
   "files": [
     {
       "file": ".nojekyll",
       "bytes": 1,
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "BALANCE-REFRESH.md",
+      "bytes": 1351,
+      "sha256": "5ba41b059428df026cbe61f2c3b6d0dbba63640014b95f827fa83bed7314b0fd"
     },
     {
       "file": "EXPANSION-RELEASE.md",
@@ -433,8 +438,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 13117,
-      "sha256": "997e83ae814f740db72782422fd4fc8e580b9cec4104dcb04b9f412902e624ce"
+      "bytes": 13143,
+      "sha256": "f2d7a939544fcab5b608290169bdb6d2680b43c7f82f71d7a4b524b6890e8e0e"
     },
     {
       "file": "bestiary.html",
@@ -453,8 +458,8 @@
     },
     {
       "file": "campaign.js",
-      "bytes": 5553,
-      "sha256": "9219df53885fcef18c00fece1949ba9902dd34321bbd4d06673cd50d919a4393"
+      "bytes": 5974,
+      "sha256": "80767694900f3277b3909413893ede04a4e66aa2ce3839af940e6822a69ccc4c"
     },
     {
       "file": "character-viewer.html",
@@ -468,13 +473,13 @@
     },
     {
       "file": "combat-fx-3d.js",
-      "bytes": 5978,
-      "sha256": "9c44f756e04a4ab47c9258c02a5bc76c40fd667fd5fe27b0d4c78fd42afeab01"
+      "bytes": 6005,
+      "sha256": "d6200b3e873c690998bdc2188509a324154c0af0d00a9db4749c0b15b47b60cb"
     },
     {
       "file": "core.js",
-      "bytes": 10938,
-      "sha256": "5d3f64ae7b2abb2262aa49268ba3b6a60b9156aa7e0710914fbf49abfeb21d9e"
+      "bytes": 11242,
+      "sha256": "a7640bda8c1e5e140edca8facb75c8351ccff315c742d83ee8a0c896c73fef36"
     },
     {
       "file": "environment-detail.js",
@@ -483,8 +488,8 @@
     },
     {
       "file": "game.js",
-      "bytes": 20713,
-      "sha256": "ebf8663c6a3d8aacaadfca565c717fc621e111ff1a8e881c0f93bda87851dd51"
+      "bytes": 21462,
+      "sha256": "efe26170afb21b0d3c87cf1440fd73c32d6b26559bd8a771b6353eb789804abc"
     },
     {
       "file": "gnome-garden.js",
@@ -498,8 +503,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 7164,
-      "sha256": "a97569b6c05d132e91b3a0dcbda3255cdc4bdcd3ba259742760af54520c272c5"
+      "bytes": 7374,
+      "sha256": "055689544daa56be8b67a6cd8122086eff5307d91db888f840901c341bcfd620"
     },
     {
       "file": "knoll-controls.css",
@@ -537,14 +542,24 @@
       "sha256": "22bece8cb9e987b9c486345fa7e660bfdf43acd67475918bf5244b13595c62c6"
     },
     {
+      "file": "tools/balance.test.cjs",
+      "bytes": 2390,
+      "sha256": "4af081759cb44856f4118b3d59b6906bca04a8addaaad895356d9a38f6882bf0"
+    },
+    {
+      "file": "tools/chapter-rules.test.cjs",
+      "bytes": 1623,
+      "sha256": "b0a442929a8b0c1fe1d2ca186a08f8e9a46fd48131f5b2625a824a6da70ec951"
+    },
+    {
       "file": "tools/deliver-motion.cjs",
       "bytes": 2368,
       "sha256": "fb2eacdae4025c1f1bcae2038195c06e4b530ca3bbf059e999b570465a41aa70"
     },
     {
       "file": "tools/expansion-runtime.test.cjs",
-      "bytes": 3098,
-      "sha256": "672837d61b899fe4c6456644cab3a12f82f7cf57dca04c432e46cbbb553f4014"
+      "bytes": 3192,
+      "sha256": "e6eb17cc7d87d4fdc26a4e7d78d74b10da8f2a2fb0b1f9f0796c65c7b5659326"
     },
     {
       "file": "tools/finish-motion.py",
