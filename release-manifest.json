@@ -1,10 +1,15 @@
 {
-  "version": "knoll-keepers-3d-1.1.0-terrain",
+  "version": "knoll-keepers-3d-1.2.0-expansion",
   "files": [
     {
       "file": ".nojekyll",
       "bytes": 1,
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "EXPANSION-RELEASE.md",
+      "bytes": 1968,
+      "sha256": "7cf7b5b51f4ecd08e147c6356ea8fcfc561b1c246f12f2a623203de255d80249"
     },
     {
       "file": "MAP-RELEASE.md",
@@ -45,6 +50,51 @@
       "file": "assets/audio/magical.ogg",
       "bytes": 59071,
       "sha256": "119f9061a566c72c1c58444b03f8685b833079ef268dda02fe742eb34d3bc68f"
+    },
+    {
+      "file": "assets/celebration/fordenad.gif",
+      "bytes": 3983927,
+      "sha256": "123aca03bad71b171f9dfdf190c3d1dab8ebca0561c86b7a833b2317f800890d"
+    },
+    {
+      "file": "assets/celebration/host.gif",
+      "bytes": 4354480,
+      "sha256": "c9325f0c5572f7a18901c2268a1d8e618c04490bd19cc8b36159bdd9dca754c5"
+    },
+    {
+      "file": "assets/celebration/knowme.gif",
+      "bytes": 3638637,
+      "sha256": "c8d02675ef15c5d2bc0f3263e7909a9d05b060b5e2a6e0fd849dd60f7131fe27"
+    },
+    {
+      "file": "assets/celebration/lady.gif",
+      "bytes": 296920,
+      "sha256": "b15d620ea2c0a2dbb8aff55b3b88625362c1431834fd941e696441b1ab3a4509"
+    },
+    {
+      "file": "assets/celebration/maahaa.gif",
+      "bytes": 4347614,
+      "sha256": "ba2cb70496ec8fee1f96885b17ac9db69643391fd7a642c6ee4228eead523afd"
+    },
+    {
+      "file": "assets/celebration/phil.gif",
+      "bytes": 260178,
+      "sha256": "d789dedc7f28ace8c8d468f2fa9d4b0c90515ab456b2d500079ef6c02ab901e3"
+    },
+    {
+      "file": "assets/celebration/receipt.json",
+      "bytes": 2713,
+      "sha256": "96e436e448455784959b7804cf30967aa9976b2e13ddef61ad99576581c902d6"
+    },
+    {
+      "file": "assets/celebration/reno.gif",
+      "bytes": 300998,
+      "sha256": "5eba6db834a9f373a2dac1cd665cb9519edca530ccb503df176cdc668a10284b"
+    },
+    {
+      "file": "assets/celebration/sailor.gif",
+      "bytes": 2740860,
+      "sha256": "3a2475c60e1ef6c7502237ce377e07ec9e0c8bb4a0936946389c350c2814e604"
     },
     {
       "file": "assets/environment/forest.glb",
@@ -157,6 +207,11 @@
       "sha256": "a24da00ab92365e205626f4a8ef9e79726c995e06ec60a88f446604f44614449"
     },
     {
+      "file": "assets/lady.png",
+      "bytes": 278488,
+      "sha256": "0ced7b30965998db44719489208e45ea7585efe6fafd14859bf969a57e37a86c"
+    },
+    {
       "file": "assets/maahaa.webp",
       "bytes": 1213858,
       "sha256": "433380efc3eca51cb850d99bf4797f13a0984fe69f3d32873c571b5473dda1e3"
@@ -170,6 +225,11 @@
       "file": "assets/models/boss.glb",
       "bytes": 1841408,
       "sha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f"
+    },
+    {
+      "file": "assets/models/demon.glb",
+      "bytes": 3014832,
+      "sha256": "471b1f293ca3d44343153653f7e97653ed8c3fcd15c873b2ccad28f792086fce"
     },
     {
       "file": "assets/models/fordenad.glb",
@@ -192,14 +252,29 @@
       "sha256": "cb27b24e698ab2cfa99480050dd80b32cb64089f504bc2817e2555d6846bc31a"
     },
     {
+      "file": "assets/models/lady.glb",
+      "bytes": 2615668,
+      "sha256": "63b9acdff2d0eb82edc67cc1310e9e88a0c1a421458355e0b9dfe3274fcb0a37"
+    },
+    {
       "file": "assets/models/maahaa.glb",
       "bytes": 1583884,
       "sha256": "779971feb5284376e792b8c6844e6542ca75e55ad224e11c9b98de67fab6f3bc"
     },
     {
       "file": "assets/models/manifest.json",
-      "bytes": 3866,
-      "sha256": "c73d2aaef825a93cccfac7cc6b751d6d363c5aaeebdb5b762f2c4723d94152f9"
+      "bytes": 5484,
+      "sha256": "9ff6429fda797fc673d9c1b2a4712b00c84fa61c702f3600b6e77fd807d31d9f"
+    },
+    {
+      "file": "assets/models/phil.glb",
+      "bytes": 2449492,
+      "sha256": "e08c5d5b85a152e5c80f590669dead6894810b694d90ac045d00e371801047ab"
+    },
+    {
+      "file": "assets/models/reno.glb",
+      "bytes": 2700472,
+      "sha256": "445ad962fb368ace7b1ab769ea91fe38cf8dcb97653d216d73a0377b5f585ab1"
     },
     {
       "file": "assets/models/sailor.glb",
@@ -230,6 +305,16 @@
       "file": "assets/mutant-venom.webp",
       "bytes": 1907160,
       "sha256": "91b5f06160cb65952672b3ce040fca4b890445f7f6a953d213673b7a2f49da94"
+    },
+    {
+      "file": "assets/phil.png",
+      "bytes": 317974,
+      "sha256": "04e47c7e73759dd228416253b86f13c308039d62babcdb320ce253017bfbe740"
+    },
+    {
+      "file": "assets/reno.png",
+      "bytes": 292693,
+      "sha256": "3629dca0798eb872a14c1ded98be3e51d099a48b22990a165ee8754fe0675023"
     },
     {
       "file": "assets/sailor.webp",
@@ -263,8 +348,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 12220,
-      "sha256": "e93a27a2f2095e1b32ba5730c6d213b80c7edf42beb044e9909edfb4a0ba9c61"
+      "bytes": 12488,
+      "sha256": "e993ff7067f72b1511cdec9386747f04804cbb9d916df35c9bca2aad64c7cd58"
     },
     {
       "file": "bestiary.html",
@@ -278,13 +363,23 @@
     },
     {
       "file": "campaign.css",
-      "bytes": 792,
-      "sha256": "2798a6120a7c54b651480fde86b26f7ec22da81bc7701e11ad69be02a8f07a43"
+      "bytes": 1367,
+      "sha256": "e6d1194ae41f6dc68222ac8db0031bec7768709c947b27fce1485d2ffbccbf93"
+    },
+    {
+      "file": "campaign.js",
+      "bytes": 5553,
+      "sha256": "9219df53885fcef18c00fece1949ba9902dd34321bbd4d06673cd50d919a4393"
+    },
+    {
+      "file": "combat-fx-3d.js",
+      "bytes": 3920,
+      "sha256": "a2a70c0ffc3be21eff59aad3ca4a8648b43d2d916e70f96cb374ae9f217edb00"
     },
     {
       "file": "core.js",
-      "bytes": 9705,
-      "sha256": "5b6c92fc3aa8a004f07bc8fb01136b3d6f30904c3c727e6351c71dee537ea9e4"
+      "bytes": 10938,
+      "sha256": "5d3f64ae7b2abb2262aa49268ba3b6a60b9156aa7e0710914fbf49abfeb21d9e"
     },
     {
       "file": "environment-detail.js",
@@ -293,8 +388,8 @@
     },
     {
       "file": "game.js",
-      "bytes": 19134,
-      "sha256": "404c5b9844addccba1d9ab333088a933bfaf47662a7da60bb2b3563b02204ee8"
+      "bytes": 20713,
+      "sha256": "ebf8663c6a3d8aacaadfca565c717fc621e111ff1a8e881c0f93bda87851dd51"
     },
     {
       "file": "gnome-garden.js",
@@ -308,8 +403,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 6724,
-      "sha256": "d1e20ca842ef461e2b1de04362144f751c5b24949ca874ff84f0c4e0ca5d64c1"
+      "bytes": 7077,
+      "sha256": "8f73f875832a4b038c52f3fdf7b8bc2a6795f6f1fbcbb61c8192b4f6112f9856"
     },
     {
       "file": "knoll-controls.css",
@@ -318,8 +413,8 @@
     },
     {
       "file": "map-layout.js",
-      "bytes": 990,
-      "sha256": "832bf82f797286d3e9938dadb8a3f36ec7f1aa226e1099262dd4475cc17676af"
+      "bytes": 1007,
+      "sha256": "8a49b0604f46fe4fbac79226c066b18bd7b0a8b9c58fe9c8d593c33c66adffb7"
     },
     {
       "file": "model-renderer.js",
@@ -342,9 +437,14 @@
       "sha256": "22bece8cb9e987b9c486345fa7e660bfdf43acd67475918bf5244b13595c62c6"
     },
     {
+      "file": "tools/expansion-runtime.test.cjs",
+      "bytes": 3067,
+      "sha256": "a6dd981e9a9440b66009b083e085cb767a5a0adee8fa6e232261ac76abe33ebb"
+    },
+    {
       "file": "tools/map.test.cjs",
-      "bytes": 2135,
-      "sha256": "3e540256ce75bdefcead14e0cae15899a58dc64fa86a43ae7fba1932c37606af"
+      "bytes": 2136,
+      "sha256": "7593a9c5054798658531b630cf34cd57472ddec3066b5dd06b451df2dde03094"
     },
     {
       "file": "tools/placement.test.cjs",
@@ -385,6 +485,16 @@
       "file": "vendor/three/three.module.js",
       "bytes": 603113,
       "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "file": "victory-scroll.css",
+      "bytes": 1896,
+      "sha256": "5e3b0be0d1416c03d74185802b6e6c8af7cd88d418f079921ee24e0aaea39f45"
+    },
+    {
+      "file": "victory-scroll.js",
+      "bytes": 1826,
+      "sha256": "c0629720d3862f5bea3af0b9f0be353a7de1b9701a4a211e1664c618a412c42f"
     }
   ]
 }
