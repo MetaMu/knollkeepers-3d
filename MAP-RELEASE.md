@@ -1,5 +1,9 @@
 # 3D forest map — 2026-09-12
 
+## Glass sanctuary
+
+Replaced opaque side and rear walls with single transparent glass panes (13% opacity, no depth writes), outlined in bronze. Changed the arched roof to a fine copper material. Existing ornamental wirework and open entrance remain. The low-opacity panes prioritize sightlines through the shrine over opaque/refraction effects. No new assets or spending.
+
 ## Double-scale ornamental shrine revision
 
 The entire sanctuary is scaled 2x in every dimension. Removed regular helical post and pedestal coils, repeated spiral rows and evenly spaced roof bands. Replaced them with original hand-shaped copper spline wirework: interwoven S-curves, uneven teardrop loops, a curled pendant-like crest and side-face cradles. Moved the expanded footprint east beside the path with a foundation and short approach, avoiding nearby knoll footprints; combat path and balance are unchanged. Shrine camera now frames the larger exterior. No new assets, credits or plugins.

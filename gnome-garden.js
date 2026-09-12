@@ -38,16 +38,21 @@ export function pearShrine(scene,position){
  const speckles=new T.InstancedMesh(new T.SphereGeometry(.009,4,3),bronze,150),d=new T.Object3D();for(let i=0;i<150;i++){const v=1-2*(i+.5)/150,a=i*2.39996,r=Math.sqrt(1-v*v);d.position.set(Math.cos(a)*r*.541,1.12+v*.472,Math.sin(a)*r*.521);d.updateMatrix();speckles.setMatrixAt(i,d.matrix);}shrine.add(speckles);
  const dial=mesh(new T.CylinderGeometry(.16,.16,.07,24),bronze,0,.35,.74);dial.rotation.x=Math.PI/2;const face=mesh(new T.CircleGeometry(.125,24),new T.MeshStandardMaterial({color:0xf5e4b7}),0,.35,.782);const needle=mesh(new T.BoxGeometry(.013,.09,.008),copper,.025,.38,.79);needle.rotation.z=-.6;
  // A visibly open sanctuary, with a plain interior and exterior wire-wrapped adornment.
- const wood=new T.MeshStandardMaterial({color:0x354638,roughness:.95,side:T.DoubleSide});
+ // Low-opacity glass preserves enemy visibility; no opaque transmission backdrop.
+ const glass=new T.MeshStandardMaterial({color:0xc2e2db,roughness:.12,metalness:.05,transparent:true,opacity:.13,depthWrite:false,side:T.DoubleSide});
+ const roofCopper=new T.MeshStandardMaterial({color:0xcd8058,metalness:.72,roughness:.29,side:T.DoubleSide});
  mesh(new T.BoxGeometry(2.8,.15,2.35),bronze,0,.04,.3);
- mesh(new T.BoxGeometry(2.65,2.25,.12),wood,0,1.2,-.8);
+ mesh(new T.PlaneGeometry(2.56,2.25),glass,0,1.2,-.8);
+ for(const y of [.075,2.325])mesh(new T.BoxGeometry(2.65,.055,.065),bronze,0,y,-.8);
+ for(const x of [-1.28,1.28])mesh(new T.BoxGeometry(.055,2.3,.065),bronze,x,1.2,-.8);
  for(const side of [-1,1]){
-  mesh(new T.BoxGeometry(.12,2.25,2.2),wood,side*1.28,1.2,.3);
+  mesh(new T.PlaneGeometry(2.2,2.25),glass,side*1.28,1.2,.3).rotation.y=Math.PI/2;
+  for(const y of [.075,2.325])mesh(new T.BoxGeometry(.065,.055,2.2),bronze,side*1.28,y,.3);
   mesh(new T.CylinderGeometry(.12,.17,2.4,12),bronze,side*1.2,1.25,1.35);
   // Three strands wrap each post like a copper-bound carved staff.
  }
  const roofShape=new T.Shape();roofShape.moveTo(-1.55,2.35);roofShape.quadraticCurveTo(-.8,3.35,0,3.55);roofShape.quadraticCurveTo(.8,3.35,1.55,2.35);roofShape.lineTo(1.4,2.32);roofShape.quadraticCurveTo(.7,3.17,0,3.37);roofShape.quadraticCurveTo(-.7,3.17,-1.4,2.32);roofShape.closePath();
- mesh(new T.ExtrudeGeometry(roofShape,{depth:2.6,bevelEnabled:false,curveSegments:16}),wood,0,0,-.95);
+ mesh(new T.ExtrudeGeometry(roofShape,{depth:2.6,bevelEnabled:false,curveSegments:16}),roofCopper,0,0,-.95);
  // Copper loops embrace the roof as wire wrapping embraces a polished stone.
 
  // Hand-shaped jewelry-style copper: unequal teardrops, flowing S-bends and crossing strands.
