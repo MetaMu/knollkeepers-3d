@@ -4,8 +4,8 @@
   const $=s=>document.querySelector(s), imgs={};
   const art={knowme:'assets/knowme.webp',host:'assets/host.webp',sailor:'assets/sailor.webp',maahaa:'assets/maahaa.webp',fordenad:'assets/fordenad.webp',board:'assets/forest-expanded.webp',burnt:'assets/forest-burnt.webp'}; 
   const cards=[['knowme','1'],['host','2'],['sailor','3'],['maahaa','4'],['fordenad','5']]; let selected='knowme', selectedTower=null, placing=false, paused=false, speed=1, last=0, raf=0, toastTimer=0, sound=false;
-  const sfx=new KnollAudio(),walks={};let visualTime=0,models3d;
-  const modelsReady=import('./model-renderer.js').then(async m=>{models3d=m;await m.load();for(const [type] of cards){const portrait=m.frame(type,'idle',0);if(portrait)art[type]=portrait.toDataURL('image/png');}}).catch(e=>console.warn('Using original art',e));
+  const sfx=new KnollAudio(),walks={};let visualTime=0,models3d,battlefield;
+  const modelsReady=import('./model-renderer.js').then(async m=>{models3d=m;await m.load({portraitsOnly:true});for(const [type] of cards){const portrait=m.frame(type,'idle',0);if(portrait)art[type]=portrait.toDataURL('image/png');}}).catch(e=>console.warn('Using original art',e));
   const roman=['','I','II','III'];
   function loadAssets(){return Promise.all([modelsReady,loadWalks(),...Object.entries(art).map(async([k,src])=>{if(['nibble','brute','boss','venom'].includes(k)){imgs[k]=await loadCharacter(src);return;}imgs[k]=await new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error(src));im.src=src;});})]);}
   async function loadWalks(){await Promise.all(['base','hulk','venom','boss'].flatMap(kind=>['walk','mutant'].map(async prefix=>{walks[prefix+'-'+kind]=await loadWalkSheet('assets/'+prefix+'-'+kind+'.webp');})));}
@@ -46,7 +46,7 @@
     else if(e.kind==='beam'){for(let i=0;i<3;i++){ctx.strokeStyle=i===1?'#fff8c9':e.color;ctx.lineWidth=i===1?5:2;ctx.beginPath();ctx.moveTo(e.x+i*3,e.y);ctx.lineTo(e.tx-i*3,e.ty);ctx.stroke();}ctx.fillStyle='#fffbd0';ctx.beginPath();ctx.arc(e.tx,e.ty,8+q*5,0,7);ctx.fill();}
     else if(e.kind==='muzzle'){ctx.strokeStyle='#ffe8a2';ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.lineTo(e.x+(e.tx-e.x)*.18,e.y+(e.ty-e.y)*.18);ctx.stroke();}
     ctx.restore();}}
-  function paint(){ctx.clearRect(0,0,1200,800);drawMap();drawPads();
+  function paint(){if(battlefield){battlefield.render(game,{selectedTower});return;}ctx.clearRect(0,0,1200,800);drawMap();drawPads();
     if(selectedTower){const t=selectedTower;ctx.save();ctx.strokeStyle=K.TYPES[t.type].color;ctx.fillStyle=K.TYPES[t.type].color+'12';ctx.setLineDash([5,7]);ctx.beginPath();ctx.arc(t.x,t.y,K.stats(t).range,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();}
     [...game.towers.map(t=>({y:t.y,draw:()=>drawTowers([t])})),...game.enemies.map(e=>({y:e.y,draw:()=>drawEnemies([e])}))].sort((a,b)=>a.y-b.y).forEach(s=>s.draw());
     for(const p of game.projectiles){const q=p.age/p.duration,x=p.x+(p.tx-p.x)*q,y=p.y+(p.ty-p.y)*q-(p.kind==='sailor'?Math.sin(q*Math.PI)*65:0);ctx.save();ctx.translate(x,y);ctx.fillStyle=p.color;ctx.shadowColor=p.color;ctx.shadowBlur=12;
@@ -77,5 +77,5 @@
   function togglePause(){paused=!paused;$('#pauseOverlay').hidden=!paused;$('#pauseBtn').textContent=paused?'▶':'Ⅱ'}
   $('#helpBtn').onclick=()=>$('#helpDialog').showModal();$('#closeHelp').onclick=()=>$('#helpDialog').close();$('#readyBtn').onclick=()=>$('#helpDialog').close();$('#restartBtn').onclick=()=>{$('#endDialog').close();game.reset();paused=false;$('#pauseOverlay').hidden=true;$('#pauseBtn').textContent='Ⅱ';selectedTower=null;selectType('knowme');speed=1;$('#speedBtn').textContent='1×';toast('The knoll is yours to defend.')};$('#soundBtn').onclick=async()=>{sound=!sound;$('#soundBtn').setAttribute('aria-pressed',sound);$('#soundBtn').setAttribute('aria-label',sound?'Mute sound':'Enable sound');$('#soundBtn').textContent=sound?'🔊':'♫';if(sound){try{await sfx.enable();if(!sound)sfx.mute();else toast('Magic sound effects enabled.');}catch{sound=false;sfx.mute();$('#soundBtn').setAttribute('aria-pressed','false');$('#soundBtn').textContent='♫';toast('Audio could not load. Try again.');}}else sfx.mute();};$('#enterStageBtn').onclick=()=>$('#stageDialog').close();
   document.addEventListener('keydown',e=>{if(e.repeat||document.querySelector('dialog[open]')||['INPUT','TEXTAREA','SELECT','BUTTON'].includes(e.target.tagName))return;if(e.key>='1'&&e.key<='5')selectType(cards[+e.key-1][0]);if(e.code==='Space'){e.preventDefault();if(game.status==='build')$('#waveBtn').click()}if(e.key.toLowerCase()==='p')togglePause();if(e.key==='Escape'){placing=false;selectedTower=null;updateInspector()}});
-  loadAssets().then(()=>{makeRoster();makePads();selectType('knowme');$('#loading').remove();paint();updateUI();raf=requestAnimationFrame(loop)}).catch(()=>{$('#loading').classList.add('failed');$('#loading p').textContent='The forest needs a refresh. Reload this page to try again.'});
+  loadAssets().then(async()=>{const terrain=await import('./battlefield-3d.js');battlefield=await terrain.load(K,canvas,walks);makeRoster();makePads();selectType('knowme');$('#loading').remove();paint();updateUI();raf=requestAnimationFrame(loop)}).catch(()=>{$('#loading').classList.add('failed');$('#loading p').textContent='The forest needs a refresh. Reload this page to try again.'});
 })();

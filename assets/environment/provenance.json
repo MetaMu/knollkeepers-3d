@@ -1,0 +1,10 @@
+{
+  "source": "nightmare_before_christmas_forest.glb",
+  "sourceSha256": "4feb23a33c4c1b5ff41574fe31ff1e35c4f2c23cbc4ccae5ef6f64cf4687135b",
+  "author": "pocketmikey",
+  "title": "Nightmare Before Christmas Forest",
+  "url": "https://sketchfab.com/3d-models/nightmare-before-christmas-forest-933323d2b9cc4dc88aa772a09f5e85f5",
+  "license": "CC-BY-4.0",
+  "modifications": "Rescaled terrain and reused trees; simplified materials, cleared path and tower pads; new foliage and route added at runtime.",
+  "trees": 32
+}

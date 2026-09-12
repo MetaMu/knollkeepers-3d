@@ -2,10 +2,10 @@ import * as THREE from './vendor/three/three.module.js';
 import {GLTFLoader} from './vendor/three/addons/loaders/GLTFLoader.js';
 
 // One shared WebGL context renders reusable poses from the actual skinned GLBs.
-// The battle's painter ordering, targeting, and input remain on its existing canvas.
+// The true 3D battlefield requests only one static portrait per guardian.
 const poses=new Map();
 export function frame(name,clip,time=0){const clips=poses.get(name),frames=clips?.[clip]||clips?.idle;return frames?.[((Math.floor(time*8)%frames.length)+frames.length)%frames.length];}
-export async function load(){
+export async function load({portraitsOnly=false}={}){
  let renderer;
  try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true});}catch(e){console.warn('3D unavailable; using original art',e);return;}
  renderer.setSize(256,256);renderer.setClearColor(0,0);
@@ -14,6 +14,7 @@ export async function load(){
  try{
  const manifest=await fetch(new URL('./assets/models/manifest.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Model manifest unavailable');return r.json()});
  for(const [name,model] of Object.entries(manifest.models)){
+  if(portraitsOnly&&['base','hulk','venom','boss'].includes(name))continue;
   const loading=document.querySelector('#loading p');if(loading)loading.textContent=`Preparing 3D characters · ${poses.size+1} / ${Object.keys(manifest.models).length}`;
   let asset;
   try{
@@ -23,8 +24,9 @@ export async function load(){
    camera.position.copy(center).add(new THREE.Vector3(enemy?-3:.35,.35,6));camera.lookAt(center);
    const mixer=new THREE.AnimationMixer(asset.scene),clips={};
    for(const clip of asset.animations){
+    if(portraitsOnly&&clip.name.toLowerCase()!=='idle')continue;
     mixer.stopAllAction();mixer.clipAction(clip).reset().play();const frames=[];
-    const count=clip.name==='walk_stopmotion'?8:16;
+    const count=portraitsOnly?1:clip.name==='walk_stopmotion'?8:16;
     for(let i=0;i<count;i++){
      mixer.setTime(i*(clip.name==='walk_stopmotion'?.125:clip.duration/count));scene.updateMatrixWorld(true);renderer.render(scene,camera);
      const canvas=document.createElement('canvas');canvas.width=canvas.height=256;canvas.getContext('2d').drawImage(renderer.domElement,0,0);frames.push(canvas);

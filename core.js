@@ -9,8 +9,8 @@
     maahaa: { name: 'Maahaa', title: 'The Sunkeeper', power: 'Solar beam', cost: 190, color: '#ffe39a', range: 220, damage: 8, interval: .22, description: 'An armor-piercing sunbeam grows stronger on the same target. Built to bring down the big birds.' },
     fordenad: { name: 'Fordenad', title: 'The Thornwarden', power: 'Venom thorns', cost: 105, color: '#acd17f', range: 205, damage: 8, interval: .72, description: 'Enchanted thorns poison their mark for three seconds. Venom ignores armor and lingers after the shot.' }
   };
-  const PATH = [[-30,355],[65,340],[125,355],[165,400],[210,420],[285,420],[360,391],[402,350],[432,295],[447,258],[486,232],[536,222],[577,229],[621,255],[651,302],[669,356],[692,398],[745,429],[810,450],[871,450],[931,429],[989,388],[1025,342],[1018,296],[1043,266],[1080,251],[1120,253]];
-  const PADS = [[135,285],[280,314],[425,165],[560,157],[533,330],[562,408],[800,228],[900,285],[752,350],[870,363],[360,525],[580,566],[886,546],[1120,365],[290,185],[1035,190]].map(([x,y])=>({x,y}));
+  const PATH = root.KnollMap?.route || [[-30,355],[1120,253]];
+  const PADS = (root.KnollMap?.pads || []).map(([x,y])=>({x,y}));
   const ENEMIES = {
     scout: { name: 'Nibblers', hp: 46, speed: 67, bounty: 10, armor: 0, size: 1, leak: 1 },
     runner: { name: 'Speedpecks', hp: 34, speed: 112, bounty: 10, armor: 0, size: .85, leak: 1 },
