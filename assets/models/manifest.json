@@ -66,52 +66,72 @@
       "skins": 1
     },
     "base": {
-      "file": "base.glb",
-      "source": "nemesis/cock-nibble-rig-v4/Cock Nibble - Walking.glb",
-      "sourceSha256": "465993b10b65df4fbdc92a481ce0a4850f651e1b0a03bd288a638fab70a4bd59",
-      "sha256": "48ad0d7696a8c301e0e417881f6287b097486e0e80efd499ab17bc08c9a6b3d8",
-      "bytes": 1788640,
+      "file": "base-v2.glb",
+      "source": "overhaul-workbench/motion-v2/base/base-v2.glb",
+      "sourceSha256": "a9b6ee26250978162c2478f9238a223eaf4208ed2bb1fa6bb1d9df362d2bfb4f",
+      "sha256": "a9b6ee26250978162c2478f9238a223eaf4208ed2bb1fa6bb1d9df362d2bfb4f",
+      "bytes": 1790820,
       "clips": [
         "idle",
-        "walk_stopmotion"
+        "walk_stopmotion",
+        "cast"
       ],
-      "skins": 1
+      "skins": 1,
+      "previousFile": "base.glb",
+      "previousSha256": "48ad0d7696a8c301e0e417881f6287b097486e0e80efd499ab17bc08c9a6b3d8",
+      "walkPoses": 5,
+      "rig": "articulated thigh/shin/foot, held five-pose in-place walk"
     },
     "hulk": {
-      "file": "hulk.glb",
-      "source": "nemesis/nemesis-hulk/walk-rig/Hulk Nemesis - Walking.glb",
-      "sourceSha256": "f61c09147676c30c0de930609e7eea93a92863e74d64611e389efba6ed3eed97",
-      "sha256": "6fd6ed3f087b99e2125534d32978103a415db0091d99796d54105804b2314939",
-      "bytes": 1748616,
+      "file": "hulk-v2.glb",
+      "source": "overhaul-workbench/motion-v2/hulk/hulk-v2.glb",
+      "sourceSha256": "05963f80f9f10b5c1c0a1af3ea26d0380fe2e40e296f1a980997faad144f36a8",
+      "sha256": "05963f80f9f10b5c1c0a1af3ea26d0380fe2e40e296f1a980997faad144f36a8",
+      "bytes": 1750372,
       "clips": [
         "idle",
-        "walk_stopmotion"
+        "walk_stopmotion",
+        "cast"
       ],
-      "skins": 1
+      "skins": 1,
+      "previousFile": "hulk.glb",
+      "previousSha256": "6fd6ed3f087b99e2125534d32978103a415db0091d99796d54105804b2314939",
+      "walkPoses": 5,
+      "rig": "articulated thigh/shin/foot, held five-pose in-place walk"
     },
     "venom": {
-      "file": "venom.glb",
-      "source": "nemesis/nemesis-venom/walk-rig/Venom Nemesis - Walking.glb",
-      "sourceSha256": "2fe5959def871741930278db41ce84380aa76435645cc9a1d188337beb50c1e8",
-      "sha256": "5942adb365c7cb007ce50921191e8ee776dda73c4bde29007d093a3a9af773ac",
-      "bytes": 1800088,
+      "file": "venom-v2.glb",
+      "source": "overhaul-workbench/motion-v2/venom/venom-v2.glb",
+      "sourceSha256": "9c0f2f0bd030d2e22d474dc38a3ffdf9f799f0adfc33406bb00d6064a0475442",
+      "sha256": "9c0f2f0bd030d2e22d474dc38a3ffdf9f799f0adfc33406bb00d6064a0475442",
+      "bytes": 1801508,
       "clips": [
         "idle",
-        "walk_stopmotion"
+        "walk_stopmotion",
+        "cast"
       ],
-      "skins": 1
+      "skins": 1,
+      "previousFile": "venom.glb",
+      "previousSha256": "5942adb365c7cb007ce50921191e8ee776dda73c4bde29007d093a3a9af773ac",
+      "walkPoses": 5,
+      "rig": "articulated thigh/shin/foot, held five-pose in-place walk"
     },
     "boss": {
-      "file": "boss.glb",
-      "source": "nemesis/nemesis-boss/walk-rig/King Nibble - Walking.glb",
-      "sourceSha256": "b390b62c04c727b1d7e79364a1e298fb9705364812a3bb7667b2a93a569fc056",
-      "sha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f",
-      "bytes": 1841408,
+      "file": "boss-v2.glb",
+      "source": "overhaul-workbench/motion-v2/boss/boss-v2.glb",
+      "sourceSha256": "d072256391a9942cbd0d8f14c8567fe2f489a28cd3f1481191eea3bb4fc51c4f",
+      "sha256": "d072256391a9942cbd0d8f14c8567fe2f489a28cd3f1481191eea3bb4fc51c4f",
+      "bytes": 1843060,
       "clips": [
         "idle",
-        "walk_stopmotion"
+        "walk_stopmotion",
+        "cast"
       ],
-      "skins": 1
+      "skins": 1,
+      "previousFile": "boss.glb",
+      "previousSha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f",
+      "walkPoses": 5,
+      "rig": "articulated thigh/shin/foot, held five-pose in-place walk"
     },
     "lady": {
       "file": "lady.glb",
@@ -150,17 +170,21 @@
       "skins": 1
     },
     "demon": {
-      "file": "demon.glb",
-      "source": "../overhaul-workbench/character-production/demon-rigged.glb",
-      "sourceSha256": "d7bf0f732271280e6381165300089a11f0b5df3d3691839c24c044bfd0ad2f61",
-      "sha256": "471b1f293ca3d44343153653f7e97653ed8c3fcd15c873b2ccad28f792086fce",
-      "bytes": 3014832,
+      "file": "demon-v3.glb",
+      "source": "overhaul-workbench/motion-v3/demon/demon-v3.glb",
+      "sourceSha256": "33320eacd29439681c3fdeb99b20915d2f246dd51e237334cf1ee2085b2aa6c3",
+      "sha256": "33320eacd29439681c3fdeb99b20915d2f246dd51e237334cf1ee2085b2aa6c3",
+      "bytes": 3020920,
       "clips": [
         "idle",
-        "cast",
-        "walk_stopmotion"
+        "walk_stopmotion",
+        "cast"
       ],
-      "skins": 1
+      "skins": 1,
+      "previousFile": "demon.glb",
+      "previousSha256": "471b1f293ca3d44343153653f7e97653ed8c3fcd15c873b2ccad28f792086fce",
+      "walkPoses": 5,
+      "rig": "articulated thigh/shin/foot, held five-pose in-place walk"
     }
   }
 }

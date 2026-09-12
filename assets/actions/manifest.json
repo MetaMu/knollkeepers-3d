@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "locally rendered 3D stop-motion GIFs",
+  "gifs": {
+    "base": {
+      "file": "base.gif",
+      "frames": 5,
+      "delayMs": 160,
+      "sha256": "14a84ae473d1986fcbeffcf9c0b2fe2983cff1a02a84318fce22fd5b45f29759",
+      "bytes": 162884,
+      "sourceSha256": "48ad0d7696a8c301e0e417881f6287b097486e0e80efd499ab17bc08c9a6b3d8",
+      "credits": 0
+    },
+    "hulk": {
+      "file": "hulk.gif",
+      "frames": 5,
+      "delayMs": 160,
+      "sha256": "c8423affc54aef431c56701a99ebc6ca8c0b444ffc254ae8cf7a21885f9d989b",
+      "bytes": 208211,
+      "sourceSha256": "6fd6ed3f087b99e2125534d32978103a415db0091d99796d54105804b2314939",
+      "credits": 0
+    },
+    "venom": {
+      "file": "venom.gif",
+      "frames": 5,
+      "delayMs": 160,
+      "sha256": "78386e9bddf2eecf59dc9325894d28a213e701e7f1e1af77d020109af7188703",
+      "bytes": 186039,
+      "sourceSha256": "5942adb365c7cb007ce50921191e8ee776dda73c4bde29007d093a3a9af773ac",
+      "credits": 0
+    },
+    "boss": {
+      "file": "boss.gif",
+      "frames": 5,
+      "delayMs": 160,
+      "sha256": "89945cbb758d0840e5a1f1f88bfd0d0f648f5957ee894f31ca9ea625b88db043",
+      "bytes": 216516,
+      "sourceSha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f",
+      "credits": 0
+    },
+    "demon": {
+      "file": "demon-v3.gif",
+      "frames": 5,
+      "delayMs": 160,
+      "sha256": "74137bc8df11951dbd9e3357162c7f13da593c4b2d573f4dcad10187bbe0a98b",
+      "bytes": 225722,
+      "sourceSha256": "471b1f293ca3d44343153653f7e97653ed8c3fcd15c873b2ccad28f792086fce",
+      "credits": 0
+    },
+    "lady": {
+      "file": "lady.gif",
+      "frames": 5,
+      "delayMs": 240,
+      "sha256": "404bf869896036c76b8dca7a71ec6692f9661096081d4049799bfb19626f90f8",
+      "bytes": 177094,
+      "sourceSha256": "63b9acdff2d0eb82edc67cc1310e9e88a0c1a421458355e0b9dfe3274fcb0a37",
+      "credits": 0
+    },
+    "phil": {
+      "file": "phil.gif",
+      "frames": 5,
+      "delayMs": 240,
+      "sha256": "43e93639747d50a42bf440724764848374ee7f1ba30cd2043d69140a6ab25406",
+      "bytes": 172714,
+      "sourceSha256": "e08c5d5b85a152e5c80f590669dead6894810b694d90ac045d00e371801047ab",
+      "credits": 0
+    },
+    "reno": {
+      "file": "reno.gif",
+      "frames": 5,
+      "delayMs": 240,
+      "sha256": "0777af06f945a45b6a2badedd00d574153303888b2a40de4b4e8c714ad91572d",
+      "bytes": 202094,
+      "sourceSha256": "445ad962fb368ace7b1ab769ea91fe38cf8dcb97653d216d73a0377b5f585ab1",
+      "credits": 0
+    },
+    "demon-action": {
+      "file": "demon-action.gif",
+      "frames": 5,
+      "delayMs": 240,
+      "sha256": "18ab4329bad8217e61544def4b78f35be1847b9218ac91488d376632abc9c4ce",
+      "bytes": 165229,
+      "sourceSha256": "471b1f293ca3d44343153653f7e97653ed8c3fcd15c873b2ccad28f792086fce",
+      "credits": 0
+    }
+  }
+}
