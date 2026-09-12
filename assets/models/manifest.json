@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "license": "LicenseRef-Hyper3D-Rodin-Terms",
+  "licenseUrl": "https://hyper3d.ai/legal/terms",
+  "licenseBasis": "Section 5(b), Rodin output; user supplied character references. Reviewed 2026-09-12.",
+  "transform": "Embedded textures reduced to maximum 512 pixels; geometry, skin weights and animation accessors preserved.",
+  "models": {
+    "knowme": {
+      "file": "knowme.glb",
+      "source": "knowme-original-rig-v1/KnowME-rigged.glb",
+      "sourceSha256": "1c6dd95fbaba37cdb44e93a2e1ca91023130e6d9ec78489bf8b5a715f7ffb12d",
+      "sha256": "cb27b24e698ab2cfa99480050dd80b32cb64089f504bc2817e2555d6846bc31a",
+      "bytes": 1767324,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "host": {
+      "file": "host.glb",
+      "source": "host-rig-v1/host-rigged.glb",
+      "sourceSha256": "34e159aef609a4af25ce4c2adf73ec4bc7d4cba1da07316753fb0d55099e2213",
+      "sha256": "a477fcc4b37ff80d0969d0bf1551d45ee76310950f87602bb024f13df93680a9",
+      "bytes": 1718444,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "sailor": {
+      "file": "sailor.glb",
+      "source": "sailor-rig-v1/sailor-rigged.glb",
+      "sourceSha256": "3bdd84a2d946efbee297d984fe5874d276ad95ae2da1c1bbddb59baf0c965669",
+      "sha256": "e12f8e8acb73adce0c61cd288ef71ec9cde1c2969832433f05b9a0988f1720d2",
+      "bytes": 1790376,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "maahaa": {
+      "file": "maahaa.glb",
+      "source": "maahaa-rig-v1/maahaa-rigged.glb",
+      "sourceSha256": "a0e1cb5a0e0a54e6575a62dae3329068f25108cc40a10c098aa4f50b29202991",
+      "sha256": "779971feb5284376e792b8c6844e6542ca75e55ad224e11c9b98de67fab6f3bc",
+      "bytes": 1583884,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "fordenad": {
+      "file": "fordenad.glb",
+      "source": "fordenad-rig-v1/fordenad-rigged.glb",
+      "sourceSha256": "09fd411cbb4fdfbd0153e8a2795217b447596cc6c816fa2851713f84570c53c2",
+      "sha256": "032431a1413d9f58e0d4f27618767c3773db1a1a1513d8f3eb933da9a2b5e6d4",
+      "bytes": 1754700,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "base": {
+      "file": "base.glb",
+      "source": "nemesis/cock-nibble-rig-v4/Cock Nibble - Walking.glb",
+      "sourceSha256": "465993b10b65df4fbdc92a481ce0a4850f651e1b0a03bd288a638fab70a4bd59",
+      "sha256": "48ad0d7696a8c301e0e417881f6287b097486e0e80efd499ab17bc08c9a6b3d8",
+      "bytes": 1788640,
+      "clips": [
+        "idle",
+        "walk_stopmotion"
+      ],
+      "skins": 1
+    },
+    "hulk": {
+      "file": "hulk.glb",
+      "source": "nemesis/nemesis-hulk/walk-rig/Hulk Nemesis - Walking.glb",
+      "sourceSha256": "f61c09147676c30c0de930609e7eea93a92863e74d64611e389efba6ed3eed97",
+      "sha256": "6fd6ed3f087b99e2125534d32978103a415db0091d99796d54105804b2314939",
+      "bytes": 1748616,
+      "clips": [
+        "idle",
+        "walk_stopmotion"
+      ],
+      "skins": 1
+    },
+    "venom": {
+      "file": "venom.glb",
+      "source": "nemesis/nemesis-venom/walk-rig/Venom Nemesis - Walking.glb",
+      "sourceSha256": "2fe5959def871741930278db41ce84380aa76435645cc9a1d188337beb50c1e8",
+      "sha256": "5942adb365c7cb007ce50921191e8ee776dda73c4bde29007d093a3a9af773ac",
+      "bytes": 1800088,
+      "clips": [
+        "idle",
+        "walk_stopmotion"
+      ],
+      "skins": 1
+    },
+    "boss": {
+      "file": "boss.glb",
+      "source": "nemesis/nemesis-boss/walk-rig/King Nibble - Walking.glb",
+      "sourceSha256": "b390b62c04c727b1d7e79364a1e298fb9705364812a3bb7667b2a93a569fc056",
+      "sha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f",
+      "bytes": 1841408,
+      "clips": [
+        "idle",
+        "walk_stopmotion"
+      ],
+      "skins": 1
+    }
+  }
+}

@@ -4,9 +4,10 @@
   const $=s=>document.querySelector(s), imgs={};
   const art={knowme:'assets/knowme.webp',host:'assets/host.webp',sailor:'assets/sailor.webp',maahaa:'assets/maahaa.webp',fordenad:'assets/fordenad.webp',board:'assets/forest-expanded.webp',burnt:'assets/forest-burnt.webp'}; 
   const cards=[['knowme','1'],['host','2'],['sailor','3'],['maahaa','4'],['fordenad','5']]; let selected='knowme', selectedTower=null, placing=false, paused=false, speed=1, last=0, raf=0, toastTimer=0, sound=false;
-  const sfx=new KnollAudio(),walks={};let visualTime=0;
+  const sfx=new KnollAudio(),walks={};let visualTime=0,models3d;
+  const modelsReady=import('./model-renderer.js').then(async m=>{models3d=m;await m.load();for(const [type] of cards){const portrait=m.frame(type,'idle',0);if(portrait)art[type]=portrait.toDataURL('image/png');}}).catch(e=>console.warn('Using original art',e));
   const roman=['','I','II','III'];
-  function loadAssets(){return Promise.all([loadWalks(),...Object.entries(art).map(async([k,src])=>{if(['nibble','brute','boss','venom'].includes(k)){imgs[k]=await loadCharacter(src);return;}imgs[k]=await new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error(src));im.src=src;});})]);}
+  function loadAssets(){return Promise.all([modelsReady,loadWalks(),...Object.entries(art).map(async([k,src])=>{if(['nibble','brute','boss','venom'].includes(k)){imgs[k]=await loadCharacter(src);return;}imgs[k]=await new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error(src));im.src=src;});})]);}
   async function loadWalks(){await Promise.all(['base','hulk','venom','boss'].flatMap(kind=>['walk','mutant'].map(async prefix=>{walks[prefix+'-'+kind]=await loadWalkSheet('assets/'+prefix+'-'+kind+'.webp');})));}
   function makeRoster(){
     $('#roster').innerHTML=cards.map(([type,key])=>{const t=K.TYPES[type];return `<button class="tower-card" data-type="${type}"><div class="card-art"><img src="${art[type]}" alt="${t.name} gnome"><span class="card-key">${key}</span></div><div class="card-copy"><strong>${t.name}</strong><small>${t.power}</small><span class="card-cost">✧ ${t.cost}<em>+</em></span></div></button>`}).join('');
@@ -25,7 +26,7 @@
   function drawTowers(towers=game.towers){for(const t of towers){
     const d=K.TYPES[t.type],scale=1+(t.level-1)*.06,clock=game.time+t.id,bob=t.type==='host'?Math.sin(clock*3)*4:Math.sin(clock*2)*1.5;
     ctx.fillStyle='#162f1e55';ctx.beginPath();ctx.ellipse(t.x,t.y+2,33,11,0,0,7);ctx.fill();
-    sprite(imgs[t.type],t.x-(t.type==='sailor'?t.recoil*7:0),t.y-bob,105*scale,145*scale);
+    const pose=models3d?.frame(t.type,t.recoil>0?'cast':'idle',clock);sprite(pose||imgs[t.type],t.x-(t.type==='sailor'?t.recoil*7:0),t.y-bob,pose?160*scale:105*scale,pose?160*scale:145*scale);
     ctx.save();ctx.strokeStyle=d.color;ctx.fillStyle=d.color;ctx.shadowColor=d.color;ctx.shadowBlur=12;ctx.globalAlpha=.55;
     if(t.type==='knowme'){for(let i=0;i<6;i++){const a=clock+i*1.05;ctx.beginPath();ctx.arc(t.x+Math.cos(a)*32,t.y-55+Math.sin(a)*18,2+i%2,0,7);ctx.fill();}}
     if(t.type==='host'){ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(t.x,t.y-65,42,13,Math.sin(clock)*.4,0,Math.PI*2);ctx.stroke();}
@@ -35,7 +36,7 @@
     ctx.restore();ctx.fillStyle=d.color;ctx.font='bold 12px Georgia';ctx.textAlign='center';ctx.fillText(roman[t.level],t.x,t.y+18);ctx.textAlign='left';
   }}
 
-  function drawEnemies(enemies=game.enemies){for(const e of enemies){const kind=e.kind==='brute'?'hulk':['boss','venom'].includes(e.kind)?e.kind:'base',frames=walks[(e.mutated?'mutant':'walk')+'-'+kind],im=frames[Math.floor(e.progress/10+e.id)%4],h=105*e.size,w=h*im.width/im.height,bob=0;ctx.fillStyle='#10221966';ctx.beginPath();ctx.ellipse(e.x,e.y+2,w*.35,8,0,0,7);ctx.fill();ctx.save();ctx.translate(e.x,e.y);if(e.direction<0)ctx.scale(-1,1);sprite(im,0,bob,w,h);ctx.restore();ctx.fillStyle='#182820';ctx.fillRect(e.x-22,e.y-h-5,44,4);ctx.fillStyle=e.enraged?'#ff834d':e.kind==='venom'?'#8dff91':e.kind==='boss'?'#ffd569':'#c5e98f';ctx.fillRect(e.x-22,e.y-h-5,44*Math.max(0,e.hp/e.maxHp),4);if(e.slowUntil>game.time||e.poisonUntil>game.time){ctx.strokeStyle=e.poisonUntil>game.time?'#9ff46c':'#8ffff2';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(e.x,e.y,24,8,0,0,7);ctx.stroke();}}}
+  function drawEnemies(enemies=game.enemies){for(const e of enemies){const kind=e.kind==='brute'?'hulk':['boss','venom'].includes(e.kind)?e.kind:'base',frames=walks[(e.mutated?'mutant':'walk')+'-'+kind],pose=!e.mutated&&models3d?.frame(kind,'walk_stopmotion',game.time+e.id),im=pose||frames[Math.floor(e.progress/10+e.id)%4],h=(pose?125:105)*e.size,w=h*im.width/im.height,bob=0;ctx.fillStyle='#10221966';ctx.beginPath();ctx.ellipse(e.x,e.y+2,w*.35,8,0,0,7);ctx.fill();ctx.save();ctx.translate(e.x,e.y);if(e.direction<0)ctx.scale(-1,1);sprite(im,0,bob,w,h);ctx.restore();ctx.fillStyle='#182820';ctx.fillRect(e.x-22,e.y-h-5,44,4);ctx.fillStyle=e.enraged?'#ff834d':e.kind==='venom'?'#8dff91':e.kind==='boss'?'#ffd569':'#c5e98f';ctx.fillRect(e.x-22,e.y-h-5,44*Math.max(0,e.hp/e.maxHp),4);if(e.slowUntil>game.time||e.poisonUntil>game.time){ctx.strokeStyle=e.poisonUntil>game.time?'#9ff46c':'#8ffff2';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(e.x,e.y,24,8,0,0,7);ctx.stroke();}}}
   function drawEffects(){for(const e of game.effects){const q=Math.max(0,1-e.age/e.life);ctx.save();ctx.globalAlpha=q;ctx.shadowColor=e.color;ctx.shadowBlur=16;
     if(e.kind==='spores'){for(let i=0;i<10;i++){const a=i*.63+e.age*1.9,r=(e.radius||62)*(.35+(i%3)*.12),x=e.x+Math.cos(a)*r*(1-q*.25),y=e.y+Math.sin(a)*r*.55-e.age*14-(i%2)*8;ctx.fillStyle=i%2?'#c9ffff':'#80dcd5';ctx.beginPath();ctx.arc(x,y,2+(i%3),0,7);ctx.fill();}}
     else if(e.kind==='cannon'){const r=(e.radius||80)*(1-q);ctx.strokeStyle='#ffd58a';ctx.lineWidth=7;ctx.beginPath();ctx.arc(e.x,e.y,r,0,7);ctx.stroke();ctx.strokeStyle='#f6a35d';ctx.lineWidth=2;for(let i=0;i<8;i++){const a=i*Math.PI/4+e.age*2;ctx.beginPath();ctx.moveTo(e.x+Math.cos(a)*r*.3,e.y+Math.sin(a)*r*.3);ctx.lineTo(e.x+Math.cos(a)*r,e.y+Math.sin(a)*r);ctx.stroke();}}

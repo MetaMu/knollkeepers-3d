@@ -1,13 +1,11 @@
-# Knollkeepers · The Lost Realm
+# Knoll Keepers 3D
 
-Play at https://metamu.github.io/lost-realm-game/
+A separate edition of the Lost Realm tower-defense game, using five animated guardian GLBs and four animated enemy GLBs. Models are rendered with Three.js into cached poses for the existing 2D battlefield (2.5D presentation).
 
-A browser tower-defense game with five gnome guardians, three tower upgrade levels, and two stages of fifteen waves. Defend Forest Knoll, then face mutated enemies in the burning Ashen Knoll.
+The original 2D game remains at https://metamu.github.io/lost-realm-game/ . Its repository and deployment are preserved.
 
-Select a guardian and a stone clearing to build. Select a placed guardian to upgrade, sell, or change targeting. Use 1–5 to select guardians, Space to send a wave, and P to pause. Enable sound with the music button. Progress resets when the page is reloaded.
+Select a guardian and a clearing to build. Upgrade placed guardians, then defend 30 waves across two stages. Controls: 1–5 guardians, Space sends a wave, P pauses. Progress resets on reload.
 
-The Nemesis gallery includes eight animated characters with downloadable transparent PNG frames and sheets. These are 3D-rendered raster sprites, not rigged meshes.
+Four mutant designs retain their original artwork until their 3D models are available. Original character art also provides a fallback if WebGL is unavailable.
 
-This repository contains the prebuilt static public-beta release. GitHub Pages serves main from the repository root. No server, install, account, or API key is needed to play.
-
-See assets/CREDITS.md and assets/audio/CREDITS.md for artwork provenance and CC0 sound sources. release-manifest.json records the shipped files and SHA-256 hashes.
+Serve this directory with any static HTTP server; opening index.html directly as a local file will not load modules. All runtime dependencies and models are included. See RELEASE-3D.md and assets/models/manifest.json for validation and provenance.
