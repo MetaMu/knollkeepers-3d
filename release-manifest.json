@@ -1,5 +1,5 @@
 {
-  "version": "knoll-keepers-3d-1.2.4-rewards",
+  "version": "knoll-keepers-3d-1.2.5-abilities",
   "files": [
     {
       "file": ".nojekyll",
@@ -10,6 +10,11 @@
       "file": "BALANCE-REFRESH.md",
       "bytes": 1351,
       "sha256": "5ba41b059428df026cbe61f2c3b6d0dbba63640014b95f827fa83bed7314b0fd"
+    },
+    {
+      "file": "CATCHUP-RELEASE.md",
+      "bytes": 1065,
+      "sha256": "c89df0353e23b76a7247a96b8116e5eed91e5b310204ca3027cf3732e6b9b734"
     },
     {
       "file": "EXPANSION-RELEASE.md",
@@ -458,8 +463,8 @@
     },
     {
       "file": "campaign.js",
-      "bytes": 5974,
-      "sha256": "80767694900f3277b3909413893ede04a4e66aa2ce3839af940e6822a69ccc4c"
+      "bytes": 5980,
+      "sha256": "fe79699619005dfc244821e0bda57a99f34875c58c4f5f937cc241c8e4350bd3"
     },
     {
       "file": "character-viewer.html",
@@ -473,13 +478,13 @@
     },
     {
       "file": "combat-fx-3d.js",
-      "bytes": 6005,
-      "sha256": "d6200b3e873c690998bdc2188509a324154c0af0d00a9db4749c0b15b47b60cb"
+      "bytes": 6011,
+      "sha256": "b85b612157104a24264075fde3cd3c5924e53676833f33379645d82d49b2e24a"
     },
     {
       "file": "core.js",
-      "bytes": 11304,
-      "sha256": "01c2c1309dac154345c4ea4fb4037dc41dc88cde26ca4f8f41074da6dc84128d"
+      "bytes": 11325,
+      "sha256": "6e6053cf0ec01eb566097eb44e0add5033a0554ead2372249373b42de81181dd"
     },
     {
       "file": "environment-detail.js",
@@ -488,8 +493,8 @@
     },
     {
       "file": "game.js",
-      "bytes": 21462,
-      "sha256": "efe26170afb21b0d3c87cf1440fd73c32d6b26559bd8a771b6353eb789804abc"
+      "bytes": 21586,
+      "sha256": "ae158c6415fc61d0233da2773d64111c9438408ecf67adeb1f9e38832772ae10"
     },
     {
       "file": "gnome-garden.js",
@@ -503,8 +508,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 7420,
-      "sha256": "5bed6dc3a504346edd8082c95e8809e280be4f29fdb7cb68321306ceafe4b8de"
+      "bytes": 7419,
+      "sha256": "6dff5abc0bf01ce902a32d7934bc890d22e69017d1ee8b4b659c311f1e653034"
     },
     {
       "file": "knoll-controls.css",
@@ -543,8 +548,13 @@
     },
     {
       "file": "tools/balance.test.cjs",
-      "bytes": 2819,
-      "sha256": "c7e50b45375c647bcdd14ccd9987559e592c06babedf445fe27b06845af994d3"
+      "bytes": 2801,
+      "sha256": "8f71931ca6c2473caf76c5ed907fa4761f3391284e5099e0dbc8a0fe6f7c948d"
+    },
+    {
+      "file": "tools/catchup.test.cjs",
+      "bytes": 1785,
+      "sha256": "dc5e5f60ce3d2b05fc09e58702ebfdd35303cc7e1709fb9769eeadca65ae5289"
     },
     {
       "file": "tools/chapter-rules.test.cjs",
