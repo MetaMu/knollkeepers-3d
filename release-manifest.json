@@ -1,50 +1,20 @@
 {
-  "version": "1.0.0-beta.1",
+  "version": "knoll-keepers-3d-1.0.0",
   "files": [
     {
-      "file": "index.html",
-      "bytes": 6247,
-      "sha256": "948178df30f9d185b526791285fea7627b2a73e52a3cb48384cac85708fc6879"
+      "file": ".nojekyll",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     {
-      "file": "style.css",
-      "bytes": 11417,
-      "sha256": "22bece8cb9e987b9c486345fa7e660bfdf43acd67475918bf5244b13595c62c6"
+      "file": "README.md",
+      "bytes": 972,
+      "sha256": "7e7208d7c66b1789d14a9c6fa2447bec8c425876f1366a4e882b1423d10350c6"
     },
     {
-      "file": "campaign.css",
-      "bytes": 792,
-      "sha256": "2798a6120a7c54b651480fde86b26f7ec22da81bc7701e11ad69be02a8f07a43"
-    },
-    {
-      "file": "core.js",
-      "bytes": 10070,
-      "sha256": "a46684d00021a0c282a61b10b3bca4d55338b12e8849e90697f7af9bd0509ee2"
-    },
-    {
-      "file": "game.js",
-      "bytes": 18447,
-      "sha256": "70abaea000828504543c589cbdd0ed590e0265b6bf6fdf8274689a3ad25b5f76"
-    },
-    {
-      "file": "sprite.js",
-      "bytes": 1125,
-      "sha256": "33a94b58400189941ed5823bb1f38ceec0420fd395a2a32488c62e84a8e2fe41"
-    },
-    {
-      "file": "audio.js",
-      "bytes": 1531,
-      "sha256": "8b95d244201970c77182faeadc388bcc042ec52f50d7251c1dbf3c5e737bf6cc"
-    },
-    {
-      "file": "bestiary.html",
-      "bytes": 1474,
-      "sha256": "1ca918988064e66615b254b745f1b537e77e272b579a9148b096c3e323a1b1e6"
-    },
-    {
-      "file": "bestiary.js",
-      "bytes": 1956,
-      "sha256": "84b16916b6902d99803cceb3ba01b84d7ec7fb94798d05089d3d5906c2410b31"
+      "file": "RELEASE-3D.md",
+      "bytes": 1745,
+      "sha256": "2b48538ccdad4934b8a7a8fbb167bb78b02113a05c44e8966bf7de587bf9b20b"
     },
     {
       "file": "assets/CREDITS.md",
@@ -62,34 +32,14 @@
       "sha256": "c1c3fa48c7c209f8b8abc7423b3bd3f17dc489af3c4a92eb1fa20fe2adc447dc"
     },
     {
-      "file": "assets/audio/magical.ogg",
-      "bytes": 59071,
-      "sha256": "119f9061a566c72c1c58444b03f8685b833079ef268dda02fe742eb34d3bc68f"
-    },
-    {
       "file": "assets/audio/ice/coldsnap.wav",
       "bytes": 467244,
       "sha256": "090977264d65d90a50b04e9f0c1c4e02fb194e5b50d9fe244f0079a4da54158c"
     },
     {
-      "file": "assets/knowme.webp",
-      "bytes": 1366850,
-      "sha256": "a24da00ab92365e205626f4a8ef9e79726c995e06ec60a88f446604f44614449"
-    },
-    {
-      "file": "assets/host.webp",
-      "bytes": 1347780,
-      "sha256": "928079986bfe0583e66382e28b2d2b797f84ea4e23129b689fe23787590b0353"
-    },
-    {
-      "file": "assets/sailor.webp",
-      "bytes": 1107138,
-      "sha256": "ec7e06fa530a74b9c7331c8abddfa9157a1fcc980038497f269d8f0f19894867"
-    },
-    {
-      "file": "assets/maahaa.webp",
-      "bytes": 1213858,
-      "sha256": "433380efc3eca51cb850d99bf4797f13a0984fe69f3d32873c571b5473dda1e3"
+      "file": "assets/audio/magical.ogg",
+      "bytes": 59071,
+      "sha256": "119f9061a566c72c1c58444b03f8685b833079ef268dda02fe742eb34d3bc68f"
     },
     {
       "file": "assets/fordenad.webp",
@@ -97,19 +47,79 @@
       "sha256": "9e702932289caf563697233bfb6ea618d471336351c00ce2f9296ca7ce321581"
     },
     {
-      "file": "assets/forest-expanded.webp",
-      "bytes": 3025728,
-      "sha256": "a7cd7e7978dbe4fe84458131d8759917605b604b17ee0fa09270ad7e39235d0c"
-    },
-    {
       "file": "assets/forest-burnt.webp",
       "bytes": 2726744,
       "sha256": "a0d0dd9882daf77b38b628f0252577a694bfacfb014bfc8386dae7cffe1b42dd"
     },
     {
-      "file": "assets/walk-base.webp",
-      "bytes": 1536016,
-      "sha256": "7b31137fe1de657a91d2c74a738f0dda4220f49916b427b92110980838d382b6"
+      "file": "assets/forest-expanded.webp",
+      "bytes": 3025728,
+      "sha256": "a7cd7e7978dbe4fe84458131d8759917605b604b17ee0fa09270ad7e39235d0c"
+    },
+    {
+      "file": "assets/host.webp",
+      "bytes": 1347780,
+      "sha256": "928079986bfe0583e66382e28b2d2b797f84ea4e23129b689fe23787590b0353"
+    },
+    {
+      "file": "assets/knowme.webp",
+      "bytes": 1366850,
+      "sha256": "a24da00ab92365e205626f4a8ef9e79726c995e06ec60a88f446604f44614449"
+    },
+    {
+      "file": "assets/maahaa.webp",
+      "bytes": 1213858,
+      "sha256": "433380efc3eca51cb850d99bf4797f13a0984fe69f3d32873c571b5473dda1e3"
+    },
+    {
+      "file": "assets/models/base.glb",
+      "bytes": 1788640,
+      "sha256": "48ad0d7696a8c301e0e417881f6287b097486e0e80efd499ab17bc08c9a6b3d8"
+    },
+    {
+      "file": "assets/models/boss.glb",
+      "bytes": 1841408,
+      "sha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f"
+    },
+    {
+      "file": "assets/models/fordenad.glb",
+      "bytes": 1754700,
+      "sha256": "032431a1413d9f58e0d4f27618767c3773db1a1a1513d8f3eb933da9a2b5e6d4"
+    },
+    {
+      "file": "assets/models/host.glb",
+      "bytes": 1718444,
+      "sha256": "a477fcc4b37ff80d0969d0bf1551d45ee76310950f87602bb024f13df93680a9"
+    },
+    {
+      "file": "assets/models/hulk.glb",
+      "bytes": 1748616,
+      "sha256": "6fd6ed3f087b99e2125534d32978103a415db0091d99796d54105804b2314939"
+    },
+    {
+      "file": "assets/models/knowme.glb",
+      "bytes": 1767324,
+      "sha256": "cb27b24e698ab2cfa99480050dd80b32cb64089f504bc2817e2555d6846bc31a"
+    },
+    {
+      "file": "assets/models/maahaa.glb",
+      "bytes": 1583884,
+      "sha256": "779971feb5284376e792b8c6844e6542ca75e55ad224e11c9b98de67fab6f3bc"
+    },
+    {
+      "file": "assets/models/manifest.json",
+      "bytes": 3866,
+      "sha256": "c73d2aaef825a93cccfac7cc6b751d6d363c5aaeebdb5b762f2c4723d94152f9"
+    },
+    {
+      "file": "assets/models/sailor.glb",
+      "bytes": 1790376,
+      "sha256": "e12f8e8acb73adce0c61cd288ef71ec9cde1c2969832433f05b9a0988f1720d2"
+    },
+    {
+      "file": "assets/models/venom.glb",
+      "bytes": 1800088,
+      "sha256": "5942adb365c7cb007ce50921191e8ee776dda73c4bde29007d093a3a9af773ac"
     },
     {
       "file": "assets/mutant-base.webp",
@@ -117,9 +127,9 @@
       "sha256": "202120a55d4e06b6052362332d8f5af1934ffbccb8b0c992b6e926c65813bde3"
     },
     {
-      "file": "assets/walk-hulk.webp",
-      "bytes": 1470814,
-      "sha256": "b43b05a21d2a86c857da0816c646044221ace83d90496f3b155b32641d126e11"
+      "file": "assets/mutant-boss.webp",
+      "bytes": 1829420,
+      "sha256": "6af1cc0bc75f6abf44f8837d0f61087dfcd2a8e3ca7315bdef97da610e3e8f1a"
     },
     {
       "file": "assets/mutant-hulk.webp",
@@ -127,14 +137,19 @@
       "sha256": "a40e5554288dbb94ca30ffda39e949da3196b7f84b5103a2ef76c58c5e21afd6"
     },
     {
-      "file": "assets/walk-venom.webp",
-      "bytes": 1622744,
-      "sha256": "b2c16d300e0fae6c5c0e8a1c6ae4d17f0b160790cea8d645993d1ebf03def40e"
-    },
-    {
       "file": "assets/mutant-venom.webp",
       "bytes": 1907160,
       "sha256": "91b5f06160cb65952672b3ce040fca4b890445f7f6a953d213673b7a2f49da94"
+    },
+    {
+      "file": "assets/sailor.webp",
+      "bytes": 1107138,
+      "sha256": "ec7e06fa530a74b9c7331c8abddfa9157a1fcc980038497f269d8f0f19894867"
+    },
+    {
+      "file": "assets/walk-base.webp",
+      "bytes": 1536016,
+      "sha256": "7b31137fe1de657a91d2c74a738f0dda4220f49916b427b92110980838d382b6"
     },
     {
       "file": "assets/walk-boss.webp",
@@ -142,9 +157,99 @@
       "sha256": "51ef9462bd9a5c2692f98df7f23a99e6c95565f94859db354edbc93c2c356dc7"
     },
     {
-      "file": "assets/mutant-boss.webp",
-      "bytes": 1829420,
-      "sha256": "6af1cc0bc75f6abf44f8837d0f61087dfcd2a8e3ca7315bdef97da610e3e8f1a"
+      "file": "assets/walk-hulk.webp",
+      "bytes": 1470814,
+      "sha256": "b43b05a21d2a86c857da0816c646044221ace83d90496f3b155b32641d126e11"
+    },
+    {
+      "file": "assets/walk-venom.webp",
+      "bytes": 1622744,
+      "sha256": "b2c16d300e0fae6c5c0e8a1c6ae4d17f0b160790cea8d645993d1ebf03def40e"
+    },
+    {
+      "file": "audio.js",
+      "bytes": 1531,
+      "sha256": "8b95d244201970c77182faeadc388bcc042ec52f50d7251c1dbf3c5e737bf6cc"
+    },
+    {
+      "file": "bestiary.html",
+      "bytes": 1474,
+      "sha256": "1ca918988064e66615b254b745f1b537e77e272b579a9148b096c3e323a1b1e6"
+    },
+    {
+      "file": "bestiary.js",
+      "bytes": 1956,
+      "sha256": "84b16916b6902d99803cceb3ba01b84d7ec7fb94798d05089d3d5906c2410b31"
+    },
+    {
+      "file": "campaign.css",
+      "bytes": 792,
+      "sha256": "2798a6120a7c54b651480fde86b26f7ec22da81bc7701e11ad69be02a8f07a43"
+    },
+    {
+      "file": "core.js",
+      "bytes": 10070,
+      "sha256": "a46684d00021a0c282a61b10b3bca4d55338b12e8849e90697f7af9bd0509ee2"
+    },
+    {
+      "file": "game.js",
+      "bytes": 18921,
+      "sha256": "8c0e2c455a882cddc597de5032d9f216a2a088180a5538c4fc7f829df1ce9b07"
+    },
+    {
+      "file": "gnome-main.png",
+      "bytes": 1317060,
+      "sha256": "a92fa614d6f12a0dbacd86fbde9562621eb69e87bb6b80b0b2a84c23fe329d39"
+    },
+    {
+      "file": "index.html",
+      "bytes": 6343,
+      "sha256": "d0fe0eb2cadc1e39ea1b8c3df63bc8d14134182daadeccaad59811203db5da68"
+    },
+    {
+      "file": "model-renderer.js",
+      "bytes": 3176,
+      "sha256": "8d2b03f9ffa2b28e27e5dc3aa9fff066d812f3a3f9df2796b3311cdc7ccc601b"
+    },
+    {
+      "file": "rooster.png",
+      "bytes": 208410,
+      "sha256": "f8ef2ed7674a9595c277291c194a72cfea97d0528411dc7bec93e6ff85e1da30"
+    },
+    {
+      "file": "sprite.js",
+      "bytes": 1125,
+      "sha256": "33a94b58400189941ed5823bb1f38ceec0420fd395a2a32488c62e84a8e2fe41"
+    },
+    {
+      "file": "style.css",
+      "bytes": 11417,
+      "sha256": "22bece8cb9e987b9c486345fa7e660bfdf43acd67475918bf5244b13595c62c6"
+    },
+    {
+      "file": "vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "file": "vendor/three/addons/loaders/GLTFLoader.js",
+      "bytes": 114739,
+      "sha256": "67ac5551fdafa6e349bd80c8f8e5e39c136d6b2fb1ad647db9abb21dc86f9e4a"
+    },
+    {
+      "file": "vendor/three/addons/utils/BufferGeometryUtils.js",
+      "bytes": 35539,
+      "sha256": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+    },
+    {
+      "file": "vendor/three/three.core.js",
+      "bytes": 1403455,
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "file": "vendor/three/three.module.js",
+      "bytes": 603113,
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
     }
   ]
 }
