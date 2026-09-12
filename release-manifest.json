@@ -8,8 +8,8 @@
     },
     {
       "file": "MAP-RELEASE.md",
-      "bytes": 3523,
-      "sha256": "35534ee01fab3cedf7d77d3e7750c267ee7564a2acdcaa1a49ff8c0da6cae12e"
+      "bytes": 3978,
+      "sha256": "0db7f982c0db6e8de683e110419ca4e6f2807e1cf889f0f9d0dbbe24f0aff892"
     },
     {
       "file": "README.md",
@@ -263,8 +263,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 12031,
-      "sha256": "bfde584ef41fea2aafe52da30a269fccb902125bf49deb74995e3c8affb30bce"
+      "bytes": 12034,
+      "sha256": "523975572dbb8f24a577e534a81e7bccde6288e4bc14191f3d29cbeb6da70090"
     },
     {
       "file": "bestiary.html",
@@ -298,8 +298,8 @@
     },
     {
       "file": "gnome-garden.js",
-      "bytes": 6148,
-      "sha256": "4219f7b2170165175b2a9695c5f3e37e3525dd534b9adddb0f15f4c1c2dca4a0"
+      "bytes": 8292,
+      "sha256": "1271ffdf77160a8810cd1cb6abfb20704e83cacb0da553b189e32be0175445e0"
     },
     {
       "file": "gnome-main.png",
