@@ -1,5 +1,5 @@
 {
-  "version": "knoll-keepers-3d-1.2.1-motion",
+  "version": "knoll-keepers-3d-1.2.2-magic",
   "files": [
     {
       "file": ".nojekyll",
@@ -10,6 +10,11 @@
       "file": "EXPANSION-RELEASE.md",
       "bytes": 1968,
       "sha256": "7cf7b5b51f4ecd08e147c6356ea8fcfc561b1c246f12f2a623203de255d80249"
+    },
+    {
+      "file": "MAGIC-REFRESH.md",
+      "bytes": 1551,
+      "sha256": "b0bb49e8bef61b3732796ca16ba0f7f92ee2f074b5d56d239b41e64c3b8c3ff4"
     },
     {
       "file": "MAP-RELEASE.md",
@@ -428,8 +433,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 12680,
-      "sha256": "ae17816ac7a734768cd4708f4a8a5c032d8fdc4c37e8825df444cb2bc0ad9a6a"
+      "bytes": 13117,
+      "sha256": "997e83ae814f740db72782422fd4fc8e580b9cec4104dcb04b9f412902e624ce"
     },
     {
       "file": "bestiary.html",
@@ -463,8 +468,8 @@
     },
     {
       "file": "combat-fx-3d.js",
-      "bytes": 3920,
-      "sha256": "a2a70c0ffc3be21eff59aad3ca4a8648b43d2d916e70f96cb374ae9f217edb00"
+      "bytes": 5978,
+      "sha256": "9c44f756e04a4ab47c9258c02a5bc76c40fd667fd5fe27b0d4c78fd42afeab01"
     },
     {
       "file": "core.js",
@@ -517,6 +522,11 @@
       "sha256": "f8ef2ed7674a9595c277291c194a72cfea97d0528411dc7bec93e6ff85e1da30"
     },
     {
+      "file": "spell-recipes-3d.js",
+      "bytes": 6355,
+      "sha256": "e4c7b1d799e9c5048f618592dbb0de6bc99b7717e4b1f1fb79304857e4df3eb5"
+    },
+    {
       "file": "sprite.js",
       "bytes": 1125,
       "sha256": "33a94b58400189941ed5823bb1f38ceec0420fd395a2a32488c62e84a8e2fe41"
@@ -540,6 +550,16 @@
       "file": "tools/finish-motion.py",
       "bytes": 10435,
       "sha256": "dba98c4c7cf7786580763999b7c39cd0039fa455cc0edd05fe058600e8a84037"
+    },
+    {
+      "file": "tools/magic-review.html",
+      "bytes": 1889,
+      "sha256": "94d9d440d94980539a180ff174d14cf9448fe467ec795ff1800f07391cbc36eb"
+    },
+    {
+      "file": "tools/magic.test.cjs",
+      "bytes": 1989,
+      "sha256": "280a9974b776506357504403e20da8583924a892ab8fe4d0ba833ecb8e5cd1b7"
     },
     {
       "file": "tools/map.test.cjs",
