@@ -8,8 +8,8 @@
     },
     {
       "file": "MAP-RELEASE.md",
-      "bytes": 1859,
-      "sha256": "e9f5d4418124008a75a68afd93770a085b63777fd99ddb3c9b255ee95a531dee"
+      "bytes": 2540,
+      "sha256": "cccb5ac5f097d7804e2e753df429c3e57326652cc5bc79b9f27190b0ebe10b1d"
     },
     {
       "file": "README.md",
@@ -60,6 +60,76 @@
       "file": "assets/environment/terrain.json",
       "bytes": 102679,
       "sha256": "de1183282a38b71352181cb0de0bdd21651b9b76bd388ee243d3f0f28fe6ced0"
+    },
+    {
+      "file": "assets/environment/textures/LICENSE.txt",
+      "bytes": 191,
+      "sha256": "8a0cc25a3678440be3577989061fe945e48fb61b2ca1bf56aedd1c4cd2bea9b2"
+    },
+    {
+      "file": "assets/environment/textures/bark_brown_02_diff_1k.jpg",
+      "bytes": 659592,
+      "sha256": "920fa0bed0c9d78c1d530e99795113afd532d7db746de440f4a85d7c83ed0f1a"
+    },
+    {
+      "file": "assets/environment/textures/bark_brown_02_nor_gl_1k.jpg",
+      "bytes": 1015623,
+      "sha256": "0d5e691e8ad8bcd093a3587887fda2a6b4a948b5708a4f256f7919584c6eb857"
+    },
+    {
+      "file": "assets/environment/textures/bark_brown_02_rough_1k.jpg",
+      "bytes": 337946,
+      "sha256": "68125592de36e15bae7aa6db85c4d135aeb7e5653199ba226483a70f6d69837d"
+    },
+    {
+      "file": "assets/environment/textures/cobblestone_floor_04_diff_1k.jpg",
+      "bytes": 575440,
+      "sha256": "b0662eaec38a2056ef00abc66d1a0e8da421d704ed3ff8f9e268ad4c7b2aa58c"
+    },
+    {
+      "file": "assets/environment/textures/cobblestone_floor_04_nor_gl_1k.jpg",
+      "bytes": 781854,
+      "sha256": "a5c71dffb3f25b8b33cfeeb1bfc2fc0f158b8ebc04f3987d68f64343868d1065"
+    },
+    {
+      "file": "assets/environment/textures/cobblestone_floor_04_rough_1k.jpg",
+      "bytes": 416114,
+      "sha256": "2f62e01aa5c2051cd700c20c21ed791ee2d4ab88274b5724dfd852c4bd2264dc"
+    },
+    {
+      "file": "assets/environment/textures/forest_leaves_02_diffuse_1k.jpg",
+      "bytes": 437891,
+      "sha256": "2bac85cdc76927fa7dc311037bbbc4dfa2633ea56eb0a24c9cabe163a68c9aa5"
+    },
+    {
+      "file": "assets/environment/textures/forest_leaves_02_nor_gl_1k.jpg",
+      "bytes": 577163,
+      "sha256": "cf6a40ab24f44d3e891a92a1c252416ed1192af54ac92a5704bdfbda0805e290"
+    },
+    {
+      "file": "assets/environment/textures/forest_leaves_02_rough_1k.jpg",
+      "bytes": 192523,
+      "sha256": "3d2163acb9e22801caa4d34cb3e9bb443dfd0e6f2bebbd559c61e9b14f945dd4"
+    },
+    {
+      "file": "assets/environment/textures/receipt.json",
+      "bytes": 5456,
+      "sha256": "a5a6e9cb511304bfa1fb8848fafd93d678318739210337b87c205740babbda9f"
+    },
+    {
+      "file": "assets/environment/textures/rock_boulder_dry_diff_1k.jpg",
+      "bytes": 859211,
+      "sha256": "20f653a42fb24f42aa40641663070d578678da49af18cc1049dbdd4ed8679f3c"
+    },
+    {
+      "file": "assets/environment/textures/rock_boulder_dry_nor_gl_1k.jpg",
+      "bytes": 802497,
+      "sha256": "5915fea28a97357c78a04fb31c2516f1f7ed1b3a9cef4ae25aa93e4655e6c595"
+    },
+    {
+      "file": "assets/environment/textures/rock_boulder_dry_rough_1k.jpg",
+      "bytes": 668127,
+      "sha256": "cc5229dd6bbdc4e817cb647e60242224b8e4f0237473ac018861ea243f2e8130"
     },
     {
       "file": "assets/fordenad.webp",
@@ -193,8 +263,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 12426,
-      "sha256": "55d3064fffbe14c83a120d6d9fbc15abcaa2f2fe1603cd38e72391d7d789f340"
+      "bytes": 11773,
+      "sha256": "a3e20309f7d0f4be1cf1087e4913043b73b420fd307e6605f57920b907ef3e6c"
     },
     {
       "file": "bestiary.html",
@@ -217,9 +287,14 @@
       "sha256": "5b6c92fc3aa8a004f07bc8fb01136b3d6f30904c3c727e6351c71dee537ea9e4"
     },
     {
+      "file": "environment-detail.js",
+      "bytes": 3640,
+      "sha256": "838c8b39912448fabee540acfd5df7f8546bf38cac174decf2023e38fc6e24d4"
+    },
+    {
       "file": "game.js",
-      "bytes": 19120,
-      "sha256": "a15b7ec6ab0f51ce60eccec0a88e38201a8c1518ba461a2297758369b7311dac"
+      "bytes": 19116,
+      "sha256": "7617cb75575d24768eaa5ee358583821ce9f0558e58b6003c74fc83fbade82bd"
     },
     {
       "file": "gnome-main.png",
