@@ -18,7 +18,8 @@ export async function load(K,oldCanvas,walks){
  // Small deterministic ground details keep the reused terrain readable at game scale.
  const detail=await detailEnvironment(scene,environment,K,point,renderer);
  environment.scene.traverse(o=>{if(o.isMesh&&o.name!=='Ground')o.visible=false;});
- const leaves=groveTrees(scene,terrain,point,detail.bark);vineFrames(scene,K.PADS,point,KNOLL_HEIGHT);
+ const shrineSite=point(...K.PATH.at(-1));const treeTerrain={...terrain,canopies:terrain.canopies.filter(([x,y,z])=>Math.abs(x-(shrineSite.x+4.4))>3.3||Math.abs(z-shrineSite.z)>3.7)};
+ const leaves=groveTrees(scene,treeTerrain,point,detail.bark);vineFrames(scene,K.PADS,point,KNOLL_HEIGHT);
  const rockGeo=new T.DodecahedronGeometry(.24),rockMat=detail.rock;const mushrooms=new T.Group();scene.add(mushrooms);const capGeo=new T.SphereGeometry(.19,8,6,0,Math.PI*2,0,Math.PI/2),capMat=new T.MeshStandardMaterial({color:0xcf663c,roughness:.8}),stemGeo=new T.CylinderGeometry(.035,.06,.22,5),stemMat=new T.MeshStandardMaterial({color:0xe5d4a8});
  for(let i=6;i<K.PATH.length-6;i+=6){const p=K.PATH[i],n=K.PATH[i+1],len=Math.hypot(n[0]-p[0],n[1]-p[1]),side=i%12?-1:1,pos=point(p[0]-(n[1]-p[1])/len*37*side,p[1]+(n[0]-p[0])/len*37*side);const rock=new T.Mesh(rockGeo,rockMat);rock.position.copy(pos);rock.scale.set(1+i%3*.2,.55,1);scene.add(rock);if(i%12===0){const cap=new T.Mesh(capGeo,capMat),stem=new T.Mesh(stemGeo,stemMat);cap.position.copy(pos).add(new T.Vector3(.35,.25,.2));stem.position.copy(pos).add(new T.Vector3(.35,.11,.2));mushrooms.add(cap,stem);}}
  const roadMaterial=detail.road;const vertices=[],indices=[];
@@ -56,7 +57,7 @@ export async function load(K,oldCanvas,walks){
  }
  oldCanvas.style.display='none';oldCanvas.before(renderer.domElement);new ResizeObserver(()=>{const w=oldCanvas.parentElement.clientWidth;renderer.setSize(w,w*2/3,false);camera.aspect=1.5;camera.updateProjectionMatrix();}).observe(oldCanvas.parentElement);
  const trail=document.createElement('button');trail.textContent='Trail view';trail.style.cssText='width:auto;padding:0 8px';trail.onclick=()=>{const a=point(...K.PATH[18],1.15),b=point(...K.PATH[0],.8);camera.position.copy(a);controls.target.copy(b);controls.update();};document.querySelector('.map-controls').append(trail);
- const shrineView=document.createElement('button');shrineView.textContent='Shrine';shrineView.style.cssText='width:auto;padding:0 8px';shrineView.onclick=()=>{controls.target.copy(shrine.position).add(new T.Vector3(0,1.6,0));camera.position.copy(shrine.position).add(new T.Vector3(3,3.6,6.5));controls.update();};document.querySelector('.map-controls').append(shrineView);
+ const shrineView=document.createElement('button');shrineView.textContent='Shrine';shrineView.style.cssText='width:auto;padding:0 8px';shrineView.onclick=()=>{controls.target.copy(shrine.position).add(new T.Vector3(0,3.4,0));camera.position.copy(shrine.position).add(new T.Vector3(-12,7,8));controls.update();};document.querySelector('.map-controls').append(shrineView);
  const reset=document.createElement('button');reset.textContent='Reset view';reset.style.cssText='width:auto;padding:0 10px;white-space:nowrap';reset.onclick=()=>{camera.position.set(0,23,25);controls.target.copy(target);controls.update();};document.querySelector('.map-controls').append(reset);
  const note=document.createElement('span');note.textContent='Drag 360° · Right-drag to pan · Scroll to zoom';note.style.cssText='position:absolute;bottom:91px;right:14px;color:#fff7ce;font:11px system-ui;pointer-events:none';oldCanvas.parentElement.append(note);
  return {render};

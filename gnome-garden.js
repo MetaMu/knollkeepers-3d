@@ -36,7 +36,6 @@ export function pearShrine(scene,position){
  mesh(new T.CylinderGeometry(.035,.055,.2,8),bronze,0,1.63,0).rotation.z=-.25;
  const blade=mesh(new T.SphereGeometry(1,8,6),new T.MeshStandardMaterial({color:0x6e9150,roughness:.8}),.14,1.68,0);blade.scale.set(.2,.035,.09);blade.rotation.z=.3;
  const speckles=new T.InstancedMesh(new T.SphereGeometry(.009,4,3),bronze,150),d=new T.Object3D();for(let i=0;i<150;i++){const v=1-2*(i+.5)/150,a=i*2.39996,r=Math.sqrt(1-v*v);d.position.set(Math.cos(a)*r*.541,1.12+v*.472,Math.sin(a)*r*.521);d.updateMatrix();speckles.setMatrixAt(i,d.matrix);}shrine.add(speckles);
- for(const side of [-1,1]){const points=[];for(let j=0;j<=40;j++){const a=j/40*Math.PI*5;points.push(new T.Vector3(side*.7+Math.cos(a)*.1,.5+j/40*.7,Math.sin(a)*.1));}shrine.add(tube(points,.025,copper));mesh(new T.SphereGeometry(.09,10,8),glow,side*.7,1.25,0);}
  const dial=mesh(new T.CylinderGeometry(.16,.16,.07,24),bronze,0,.35,.74);dial.rotation.x=Math.PI/2;const face=mesh(new T.CircleGeometry(.125,24),new T.MeshStandardMaterial({color:0xf5e4b7}),0,.35,.782);const needle=mesh(new T.BoxGeometry(.013,.09,.008),copper,.025,.38,.79);needle.rotation.z=-.6;
  // A visibly open sanctuary, with a plain interior and exterior wire-wrapped adornment.
  const wood=new T.MeshStandardMaterial({color:0x354638,roughness:.95,side:T.DoubleSide});
@@ -46,14 +45,31 @@ export function pearShrine(scene,position){
   mesh(new T.BoxGeometry(.12,2.25,2.2),wood,side*1.28,1.2,.3);
   mesh(new T.CylinderGeometry(.12,.17,2.4,12),bronze,side*1.2,1.25,1.35);
   // Three strands wrap each post like a copper-bound carved staff.
-  for(let strand=0;strand<3;strand++){const pts=[];for(let j=0;j<=64;j++){const t=j/64,a=t*Math.PI*9+strand*Math.PI*2/3;pts.push(new T.Vector3(side*1.2+Math.cos(a)*.17,.15+t*2.28,1.35+Math.sin(a)*.17));}shrine.add(tube(pts,.024,copper));}
-  for(let curl=0;curl<3;curl++){const pts=[];for(let j=0;j<=48;j++){const t=j/48,a=t*Math.PI*4,r=.27*(1-t)+.015;pts.push(new T.Vector3(side*(1.0+Math.cos(a)*r),.65+curl*.64+Math.sin(a)*r,1.55));}shrine.add(tube(pts,.025,copper));}
  }
  const roofShape=new T.Shape();roofShape.moveTo(-1.55,2.35);roofShape.quadraticCurveTo(-.8,3.35,0,3.55);roofShape.quadraticCurveTo(.8,3.35,1.55,2.35);roofShape.lineTo(1.4,2.32);roofShape.quadraticCurveTo(.7,3.17,0,3.37);roofShape.quadraticCurveTo(-.7,3.17,-1.4,2.32);roofShape.closePath();
  mesh(new T.ExtrudeGeometry(roofShape,{depth:2.6,bevelEnabled:false,curveSegments:16}),wood,0,0,-.95);
- for(let strand=0;strand<4;strand++){const pts=[];for(let j=0;j<=48;j++){const t=j/48,x=-1.53+t*3.06,y=2.36+1.15*Math.sin(t*Math.PI);pts.push(new T.Vector3(x,y+Math.sin(t*Math.PI*12+strand)*.035,1.67+strand*.028));}shrine.add(tube(pts,.025,copper));}
  // Copper loops embrace the roof as wire wrapping embraces a polished stone.
- for(let band=0;band<5;band++){const pts=[];for(let j=0;j<=48;j++){const t=j/48,x=-1.52+t*3.04;pts.push(new T.Vector3(x,2.39+1.15*Math.sin(t*Math.PI),-.8+band*.57));}shrine.add(tube(pts,.026,copper));}
- const crest=[];for(let j=0;j<=48;j++){const t=j/48,a=t*Math.PI*4,r=.29*(1-t);crest.push(new T.Vector3(Math.cos(a)*r,3.64+Math.sin(a)*r,1.7));}shrine.add(tube(crest,.03,copper));
- shrine.name='Copper-wrapped pear sanctuary';shrine.position.copy(position);scene.add(shrine);return shrine;
+
+ // Hand-shaped jewelry-style copper: unequal teardrops, flowing S-bends and crossing strands.
+ function wire(coords,r=.028){shrine.add(tube(coords.map(p=>new T.Vector3(...p)),r,copper));}
+ for(const side of [-1,1]){
+  const shapes=[
+   [[1.2,.12,1.53],[1.48,.45,1.62],[1.08,.85,1.7],[1.42,1.24,1.62],[1.16,1.65,1.72],[1.35,2.2,1.53],[.88,2.66,1.7],[.5,2.88,1.69]],
+   [[1.28,.18,1.64],[.96,.62,1.65],[1.36,1.06,1.74],[1.02,1.46,1.59],[1.42,1.93,1.67],[1.02,2.39,1.73]],
+   [[1.18,.72,1.75],[.86,1.03,1.77],[.72,1.38,1.75],[1.05,1.57,1.77],[1.29,1.23,1.76],[1.18,.72,1.75]],
+   [[1.18,1.85,1.74],[.86,2.02,1.82],[.76,2.3,1.79],[1.06,2.44,1.75],[1.3,2.19,1.73],[1.18,1.85,1.74]]
+  ];
+  shapes.forEach((shape,i)=>wire(shape.map(([x,y,z])=>[side*x,y+(side<0&&i===3?.12:0),z]),i===0?.044:.024));
+ }
+ wire([[-1.5,2.4,1.75],[-1.05,2.62,1.78],[-.6,3.22,1.8],[.05,3.49,1.78],[.56,3.14,1.8],[1.0,2.7,1.77],[1.52,2.41,1.75]],.046);
+ wire([[-1.5,2.43,1.83],[-.94,2.97,1.82],[-.33,3.09,1.84],[.18,3.56,1.85],[.74,3.06,1.81],[1.5,2.44,1.81]]);
+ wire([[0,3.37,1.86],[-.36,3.7,1.88],[-.16,4.02,1.88],[.17,4.14,1.88],[.42,3.87,1.88],[.24,3.61,1.89],[-.03,3.78,1.89],[.1,3.9,1.89]],.032);
+ // Side faces carry long cabochon-style cradles rather than regular spool windings.
+ for(const side of [-1,1])for(let i=0;i<2;i++)wire([[side*1.37,.22,-.65],[side*1.41,.9,.25+i*.25],[side*1.39,1.65,1.15],[side*1.38,2.24,.3],[side*1.4,1.65,-.6],[side*1.41,.9,.25+i*.25]],.03);
+ shrine.name='Copper-wrapped pear sanctuary';shrine.scale.setScalar(2);shrine.rotation.y=-Math.PI/2;
+ // Move the expanded footprint beside the path, keeping the nearby build knolls clear.
+ shrine.position.copy(position).add(new T.Vector3(4.4,0,0));scene.add(shrine);
+ const approach=new T.Mesh(new T.BoxGeometry(1.25,.16,1.35),bronze);approach.position.copy(position).add(new T.Vector3(.6,0,0));scene.add(approach);
+ const foundation=new T.Mesh(new T.BoxGeometry(4.7,.9,5.6),new T.MeshStandardMaterial({color:0x394436,roughness:1}));foundation.position.copy(position).add(new T.Vector3(3.8,-.46,0));scene.add(foundation);
+ return shrine;
 }

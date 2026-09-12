@@ -1,5 +1,9 @@
 # 3D forest map — 2026-09-12
 
+## Double-scale ornamental shrine revision
+
+The entire sanctuary is scaled 2x in every dimension. Removed regular helical post and pedestal coils, repeated spiral rows and evenly spaced roof bands. Replaced them with original hand-shaped copper spline wirework: interwoven S-curves, uneven teardrop loops, a curled pendant-like crest and side-face cradles. Moved the expanded footprint east beside the path with a foundation and short approach, avoiding nearby knoll footprints; combat path and balance are unchanged. Shrine camera now frames the larger exterior. No new assets, credits or plugins.
+
 ## Copper-wrapped shrine hut
 
 Expanded the pear shrine into a 3.55-unit-tall open-front hut (guardians are 1.65 units tall). Plain side and rear walls, an arched roof, braided copper post bindings, roof bands and spiral wirework frame the existing Golden Asian Pear centerpiece. No interior gameplay, interior-detail pass or camera-entry mode was added. Shrine exterior camera framing was widened for the larger silhouette. No paid assets or generation.
