@@ -112,6 +112,55 @@
         "walk_stopmotion"
       ],
       "skins": 1
+    },
+    "lady": {
+      "file": "lady.glb",
+      "source": "../overhaul-workbench/character-production/lady-rigged.glb",
+      "sourceSha256": "a713421afa1acfdd4e7453802e90e263079c2865cba446277b1daf6f75305ba7",
+      "sha256": "63b9acdff2d0eb82edc67cc1310e9e88a0c1a421458355e0b9dfe3274fcb0a37",
+      "bytes": 2615668,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "phil": {
+      "file": "phil.glb",
+      "source": "../overhaul-workbench/character-production/phil-rigged.glb",
+      "sourceSha256": "d70a6bddc059dd9da6e2accc560fefc609a3adc2262715e68608786ef3b300ee",
+      "sha256": "e08c5d5b85a152e5c80f590669dead6894810b694d90ac045d00e371801047ab",
+      "bytes": 2449492,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "reno": {
+      "file": "reno.glb",
+      "source": "../overhaul-workbench/character-production/reno-rigged.glb",
+      "sourceSha256": "16374b826985e893e8254b6114956343b1759efc09d160209159edcd24ef3b6c",
+      "sha256": "445ad962fb368ace7b1ab769ea91fe38cf8dcb97653d216d73a0377b5f585ab1",
+      "bytes": 2700472,
+      "clips": [
+        "idle",
+        "cast"
+      ],
+      "skins": 1
+    },
+    "demon": {
+      "file": "demon.glb",
+      "source": "../overhaul-workbench/character-production/demon-rigged.glb",
+      "sourceSha256": "d7bf0f732271280e6381165300089a11f0b5df3d3691839c24c044bfd0ad2f61",
+      "sha256": "471b1f293ca3d44343153653f7e97653ed8c3fcd15c873b2ccad28f792086fce",
+      "bytes": 3014832,
+      "clips": [
+        "idle",
+        "cast",
+        "walk_stopmotion"
+      ],
+      "skins": 1
     }
   }
 }

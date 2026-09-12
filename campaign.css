@@ -1,4 +1,5 @@
 .page{max-width:1720px;width:96%}
+.roster{grid-template-columns:repeat(7,minmax(0,1fr))}.tower-card:disabled{opacity:.45;cursor:not-allowed}#renoBtn{margin-top:10px;background:#4a5933;color:#ffedb8;font-size:12px}.eclipse{--paper:#221d30;--ink:#eee3ff;--muted:#c3b7d6;--line:#524665}.eclipse .guardian-panel,.eclipse .wave-panel,.eclipse .resources{background:#30283d;color:#eee3ff}.eclipse .guardian-copy>p,.eclipse .wave-description{color:#c3b7d6}@media(max-width:1000px){.roster{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:550px){.roster{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .ashen{--paper:#242522;--ink:#f0debb;--muted:#b6ae9c;--line:#514637;--green:#815136}
 .ashen .guardian-panel,.ashen .wave-panel,.ashen .resources{background:#302e26;border-color:#65523c}
 .ashen .card-copy{background:#39362b}.ashen .tower-card{background:#383c30}.ashen .arena{border-color:#6e4b32}

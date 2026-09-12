@@ -1,0 +1,61 @@
+{
+  "provenance": "Existing user-provided Gnome Sprite Sheets; explicitly requested reuse in Knoll Keepers 3D. No provider generation or new license purchase.",
+  "files": [
+    {
+      "id": "knowme",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\knowme\\existing-animation\\exports\\preview.gif",
+      "sha256": "c8d02675ef15c5d2bc0f3263e7909a9d05b060b5e2a6e0fd849dd60f7131fe27",
+      "bytes": 3638637,
+      "destination": "knowme.gif"
+    },
+    {
+      "id": "host",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\host\\existing-animation\\exports\\preview.gif",
+      "sha256": "c9325f0c5572f7a18901c2268a1d8e618c04490bd19cc8b36159bdd9dca754c5",
+      "bytes": 4354480,
+      "destination": "host.gif"
+    },
+    {
+      "id": "sailor",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\old-sailor\\existing-animation\\exports\\preview.gif",
+      "sha256": "3a2475c60e1ef6c7502237ce377e07ec9e0c8bb4a0936946389c350c2814e604",
+      "bytes": 2740860,
+      "destination": "sailor.gif"
+    },
+    {
+      "id": "maahaa",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\maahaa\\existing-animation\\exports\\preview.gif",
+      "sha256": "ba2cb70496ec8fee1f96885b17ac9db69643391fd7a642c6ee4228eead523afd",
+      "bytes": 4347614,
+      "destination": "maahaa.gif"
+    },
+    {
+      "id": "fordenad",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\fordenand\\existing-animation\\exports\\preview.gif",
+      "sha256": "123aca03bad71b171f9dfdf190c3d1dab8ebca0561c86b7a833b2317f800890d",
+      "bytes": 3983927,
+      "destination": "fordenad.gif"
+    },
+    {
+      "id": "lady",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\lady-never-scared\\exports\\animation.gif",
+      "sha256": "b15d620ea2c0a2dbb8aff55b3b88625362c1431834fd941e696441b1ab3a4509",
+      "bytes": 296920,
+      "destination": "lady.gif"
+    },
+    {
+      "id": "phil",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\philheal\\exports\\animation.gif",
+      "sha256": "d789dedc7f28ace8c8d468f2fa9d4b0c90515ab456b2d500079ef6c02ab901e3",
+      "bytes": 260178,
+      "destination": "phil.gif"
+    },
+    {
+      "id": "reno",
+      "source": "C:\\Users\\rosec\\OneDrive\\Documents\\Gnome Sprite Sheets\\3D Gnome Sprites\\reno-mo\\exports\\animation.gif",
+      "sha256": "5eba6db834a9f373a2dac1cd665cb9519edca530ccb503df176cdc668a10284b",
+      "bytes": 300998,
+      "destination": "reno.gif"
+    }
+  ]
+}
