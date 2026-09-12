@@ -1,5 +1,11 @@
 # 3D forest map — 2026-09-12
 
+## Garden interaction and shrine revision
+
+Fixed the status refresh overwriting projected 3D click positions with old 2D coordinates. Occupied and empty markers now share a centered transform, have visible numbers and a 30–70px target. Braided magical vines frame each knoll. Camera now permits 360-degree orbit, lower angles, closer zoom and panning; Trail view looks toward incoming enemies, Shrine provides a close view, Reset view returns to the overview.
+
+Replaced canopy blobs and broken imported tree branches with tapered textured trunks, branches and instanced pointed leaves. Added a round Golden Asian Pear with bronze freckles and leaf, copper coils, bronze gear plinth, rivets, glowing terminals and a pressure gauge. These are original lightweight runtime meshes, not a paid-provider asset or canonical package. Existing texture licenses remain in force. Vine geometry is merged by material to reduce draw calls. No Unity migration, plugin installation or spending.
+
 ## Texture and grassy-knoll update
 
 Reused the checksum-verified Poly Haven CC0 texture set already held in Dark Forest Gauntlet. Forest Leaves 02 is byte-identical to the Grove Pear Hub's forest surface. Added forest-floor color, normal and roughness detail, bark and rock materials, a textured path, and 16 rounded grass-covered knolls with flat guardian platforms and grass tufts. Raised guardian placement and click targets together. The source games were read only. Receipt: assets/environment/textures/receipt.json. The user approved direct checksum-verified copying because game-dev is unavailable; this is not canonical package admission. No paid generation or purchases.

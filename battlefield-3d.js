@@ -2,13 +2,14 @@ import * as T from './vendor/three/three.module.js';
 import {GLTFLoader} from './vendor/three/addons/loaders/GLTFLoader.js';
 import {clone} from './vendor/three/addons/utils/SkeletonUtils.js';
 import {OrbitControls} from './vendor/three/addons/controls/OrbitControls.js';
+import {groveTrees,vineFrames,pearShrine} from './gnome-garden.js';
 import {detailEnvironment,KNOLL_HEIGHT} from './environment-detail.js';
 
 export async function load(K,oldCanvas,walks){
  const renderer=new T.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(1);renderer.domElement.id='world';renderer.domElement.style.cssText='display:block;width:100%;aspect-ratio:3/2;touch-action:none';
  const scene=new T.Scene();scene.background=new T.Color('#9cbbbd');scene.fog=new T.Fog('#9cbbbd',40,90);
  const camera=new T.PerspectiveCamera(42,1.5,.1,150),target=new T.Vector3(0,0,0);
- camera.position.set(0,23,25);camera.lookAt(target);const controls=new OrbitControls(camera,renderer.domElement);controls.target.copy(target);controls.enableDamping=true;controls.minDistance=18;controls.maxDistance=46;controls.minPolarAngle=.2;controls.maxPolarAngle=1.15;controls.maxAzimuthAngle=.65;controls.minAzimuthAngle=-.65;controls.enablePan=false;
+ camera.position.set(0,23,25);camera.lookAt(target);const controls=new OrbitControls(camera,renderer.domElement);controls.target.copy(target);controls.enableDamping=true;controls.minDistance=6;controls.maxDistance=46;controls.minPolarAngle=.05;controls.maxPolarAngle=1.49;controls.enablePan=true;controls.panSpeed=.6;
  const hemi=new T.HemisphereLight(0xdffaff,0x526337,2.7);scene.add(hemi);const sun=new T.DirectionalLight(0xffe4ab,3.2);sun.position.set(-8,15,10);scene.add(sun);
  const loader=new GLTFLoader();const [environment,terrain,manifest]=await Promise.all([loader.loadAsync('./assets/environment/forest.glb'),fetch('./assets/environment/terrain.json').then(r=>r.json()),fetch('./assets/models/manifest.json').then(r=>r.json())]);scene.add(environment.scene);
  function height(x,z){const fx=T.MathUtils.clamp((x+14)/28*80,0,79.999),fz=T.MathUtils.clamp((z+10)/20*60,0,59.999),ix=Math.floor(fx),iz=Math.floor(fz),tx=fx-ix,tz=fz-iz,h=terrain.heights;return T.MathUtils.lerp(T.MathUtils.lerp(h[iz][ix],h[iz][ix+1],tx),T.MathUtils.lerp(h[iz+1][ix],h[iz+1][ix+1],tx),tz);}
@@ -16,8 +17,8 @@ export async function load(K,oldCanvas,walks){
  const groundMat=new T.MeshStandardMaterial({color:0x32432b,roughness:1});const base=new T.Mesh(new T.BoxGeometry(28,.9,20),groundMat);base.position.y=-1;scene.add(base);
  // Small deterministic ground details keep the reused terrain readable at game scale.
  const detail=await detailEnvironment(scene,environment,K,point,renderer);
- const leafMat=new T.MeshStandardMaterial({color:0x496d27,roughness:1,flatShading:true}),leafGeo=new T.IcosahedronGeometry(1,1),leaves=new T.InstancedMesh(leafGeo,leafMat,terrain.canopies.length*3),dummy=new T.Object3D();let li=0;
- for(const [x,y,z] of terrain.canopies)for(let j=0;j<3;j++){dummy.position.set(x+Math.sin(j*2.1)*.3,y-.25+j*.15,z+Math.cos(j*2.1)*.3);dummy.scale.set(.7, .5, .65);dummy.updateMatrix();leaves.setMatrixAt(li++,dummy.matrix);}scene.add(leaves);
+ environment.scene.traverse(o=>{if(o.isMesh&&o.name!=='Ground')o.visible=false;});
+ const leaves=groveTrees(scene,terrain,point,detail.bark);vineFrames(scene,K.PADS,point,KNOLL_HEIGHT);
  const rockGeo=new T.DodecahedronGeometry(.24),rockMat=detail.rock;const mushrooms=new T.Group();scene.add(mushrooms);const capGeo=new T.SphereGeometry(.19,8,6,0,Math.PI*2,0,Math.PI/2),capMat=new T.MeshStandardMaterial({color:0xcf663c,roughness:.8}),stemGeo=new T.CylinderGeometry(.035,.06,.22,5),stemMat=new T.MeshStandardMaterial({color:0xe5d4a8});
  for(let i=6;i<K.PATH.length-6;i+=6){const p=K.PATH[i],n=K.PATH[i+1],len=Math.hypot(n[0]-p[0],n[1]-p[1]),side=i%12?-1:1,pos=point(p[0]-(n[1]-p[1])/len*37*side,p[1]+(n[0]-p[0])/len*37*side);const rock=new T.Mesh(rockGeo,rockMat);rock.position.copy(pos);rock.scale.set(1+i%3*.2,.55,1);scene.add(rock);if(i%12===0){const cap=new T.Mesh(capGeo,capMat),stem=new T.Mesh(stemGeo,stemMat);cap.position.copy(pos).add(new T.Vector3(.35,.25,.2));stem.position.copy(pos).add(new T.Vector3(.35,.11,.2));mushrooms.add(cap,stem);}}
  const roadMaterial=detail.road;const vertices=[],indices=[];
@@ -26,7 +27,7 @@ export async function load(K,oldCanvas,walks){
  const pads=[];
  function label(text,color='#fff6cf'){const c=document.createElement('canvas');c.width=128;c.height=64;const ctx=c.getContext('2d');ctx.font='bold 42px system-ui';ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(text,64,46);const texture=new T.CanvasTexture(c),sprite=new T.Sprite(new T.SpriteMaterial({map:texture,depthTest:false}));sprite.scale.set(.6,.3,1);return sprite;}
  for(let i=0;i<K.PADS.length;i++){const p=K.PADS[i],number=label(String(i+1));number.position.copy(point(p.x,p.y,KNOLL_HEIGHT+.12));scene.add(number);pads.push({number,p});}
- const shrine=new T.Group(),gold=new T.MeshStandardMaterial({color:0xffca45,metalness:.4,roughness:.35});const pear=new T.Mesh(new T.SphereGeometry(.45,16,12),gold);pear.scale.set(1,1.35,1);pear.position.y=.65;shrine.add(pear);const neck=new T.Mesh(new T.SphereGeometry(.24,12,8),gold);neck.position.set(.03,1.13,0);shrine.add(neck);const stem=new T.Mesh(new T.CylinderGeometry(.035,.05,.3,6),new T.MeshStandardMaterial({color:0x50371b}));stem.position.set(.03,1.42,0);shrine.add(stem);shrine.position.copy(point(...K.PATH.at(-1)));scene.add(shrine);
+ const shrine=pearShrine(scene,point(...K.PATH.at(-1)));
  const resources={};for(const [name,model] of Object.entries(manifest.models)){const message=document.querySelector('#loading p');if(message)message.textContent='Bringing the 3D forest to life…';resources[name]=await loader.loadAsync('./assets/models/'+model.file);}
  const units=new Map(),effects=new T.Group();scene.add(effects);let prevTime=0,previousStage=0;
  const hpGeo=new T.PlaneGeometry(1,.07),hpBack=new T.MeshBasicMaterial({color:0x182820,depthTest:false}),hpGreen=new T.MeshBasicMaterial({color:0xb9e78d,depthTest:false});
@@ -50,11 +51,13 @@ export async function load(K,oldCanvas,walks){
   for(const [id,u] of units)if(!seen.has(id)){scene.remove(u.group);u.mixer?.uncacheRoot(u.model);if(u.frames){u.model.material.map.dispose();u.model.material.dispose();}units.delete(id);}
   const activeEffects=[...game.projectiles,...game.effects].slice(-70);for(let i=0;i<Math.max(activeEffects.length,effects.children.length);i++){const e=activeEffects[i];let line=effects.children[i];if(!e){line.visible=false;continue;}if(!line){line=new T.Line(new T.BufferGeometry().setAttribute('position',new T.Float32BufferAttribute(new Float32Array(6),3)),new T.LineBasicMaterial({transparent:true,opacity:.8}));line.frustumCulled=false;effects.add(line);}line.visible=true;line.material.color.set(e.color||0xffd98a);const positions=line.geometry.attributes.position;positions.setXYZ(0,...point(e.x,e.y,.65));positions.setXYZ(1,...point(e.tx??e.x,e.ty??e.y,.5));positions.needsUpdate=true;}
   ring.visible=!!selectedTower;if(selectedTower){ring.position.copy(point(selectedTower.x,selectedTower.y,.08));ring.scale.setScalar(K.stats(selectedTower).range/50);}
-  controls.update();camera.updateMatrixWorld();for(const [i,{p,number}] of pads.entries()){number.visible=!game.towers.some(t=>t.pad===i);const projected=point(p.x,p.y,KNOLL_HEIGHT+.1).project(camera),button=document.querySelector(`[data-pad="${i}"]`);if(button){button.style.left=(projected.x*.5+.5)*100+'%';button.style.top=(-projected.y*.5+.5)*100+'%';}}
+  controls.update();camera.updateMatrixWorld();for(const [i,{p,number}] of pads.entries()){number.visible=!game.towers.some(t=>t.pad===i);const projected=point(p.x,p.y,KNOLL_HEIGHT+.1).project(camera),button=document.querySelector(`[data-pad="${i}"]`);if(button){button.hidden=projected.z>1||projected.z< -1;const edge=point(p.x+35,p.y,KNOLL_HEIGHT).project(camera),diameter=Math.max(30,Math.min(70,Math.abs(edge.x-projected.x)*renderer.domElement.clientWidth));button.style.width=diameter+'px';button.style.height=diameter+'px';button.textContent=String(i+1);button.style.left=(projected.x*.5+.5)*100+'%';button.style.top=(-projected.y*.5+.5)*100+'%';}}
   renderer.render(scene,camera);document.documentElement.dataset.battlefield3d='ready';
  }
  oldCanvas.style.display='none';oldCanvas.before(renderer.domElement);new ResizeObserver(()=>{const w=oldCanvas.parentElement.clientWidth;renderer.setSize(w,w*2/3,false);camera.aspect=1.5;camera.updateProjectionMatrix();}).observe(oldCanvas.parentElement);
+ const trail=document.createElement('button');trail.textContent='Trail view';trail.style.cssText='width:auto;padding:0 8px';trail.onclick=()=>{const a=point(...K.PATH[18],1.15),b=point(...K.PATH[0],.8);camera.position.copy(a);controls.target.copy(b);controls.update();};document.querySelector('.map-controls').append(trail);
+ const shrineView=document.createElement('button');shrineView.textContent='Shrine';shrineView.style.cssText='width:auto;padding:0 8px';shrineView.onclick=()=>{controls.target.copy(shrine.position).add(new T.Vector3(0,.8,0));camera.position.copy(shrine.position).add(new T.Vector3(3,2.8,5));controls.update();};document.querySelector('.map-controls').append(shrineView);
  const reset=document.createElement('button');reset.textContent='Reset view';reset.style.cssText='width:auto;padding:0 10px;white-space:nowrap';reset.onclick=()=>{camera.position.set(0,23,25);controls.target.copy(target);controls.update();};document.querySelector('.map-controls').append(reset);
- const note=document.createElement('span');note.textContent='Drag to orbit · Scroll to zoom';note.style.cssText='position:absolute;bottom:91px;right:14px;color:#fff7ce;font:11px system-ui;pointer-events:none';oldCanvas.parentElement.append(note);
+ const note=document.createElement('span');note.textContent='Drag 360° · Right-drag to pan · Scroll to zoom';note.style.cssText='position:absolute;bottom:91px;right:14px;color:#fff7ce;font:11px system-ui;pointer-events:none';oldCanvas.parentElement.append(note);
  return {render};
 }

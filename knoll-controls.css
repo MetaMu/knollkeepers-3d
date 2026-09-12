@@ -1,0 +1,4 @@
+/* Both occupied and empty markers stay centered on the projected knoll. */
+.pad,.pad.occupied{transform:translate(-50%,-50%);height:38px;width:38px;color:#eaffd6;font:700 11px system-ui;background:radial-gradient(circle,#254d3188 0 30%,transparent 60%);border:1px solid #b9f6b47a;text-shadow:0 1px 3px #102b16;box-shadow:0 0 9px #9cf3c22b;touch-action:manipulation}
+.pad.occupied{background:#263a2970;border-color:#d4ad72;color:#ffe8b7}
+.pad:hover,.pad:focus-visible{background:#559f6266;border:2px solid #d5ffd1;box-shadow:0 0 14px #9cf3c299}

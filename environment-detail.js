@@ -24,5 +24,5 @@ export async function detailEnvironment(scene,environment,K,point,renderer){
  const blades=new T.BufferGeometry(),v=[],colors=[],green=new T.Color();
  for(let n=0;n<K.PADS.length;n++)for(let i=0;i<36;i++){const p=K.PADS[n],a=i*2.39996,rad=.48+(i%5)*.045,dx=Math.cos(a)*rad,dz=Math.sin(a)*rad,base=point(p.x+dx*50,p.y+dz*50),t=T.MathUtils.clamp((rad-.34)/.38,0,1);base.y+=KNOLL_HEIGHT*(1-t*t*(3-2*t));const h=.09+(i%4)*.025;v.push(base.x-.025,base.y,base.z,base.x+.025,base.y,base.z,base.x+.035,base.y+h,base.z+.025);green.setHex(i%3?0x759341:0xabb958);for(let k=0;k<3;k++)colors.push(green.r,green.g,green.b);}
  blades.setAttribute('position',new T.Float32BufferAttribute(v,3));blades.setAttribute('color',new T.Float32BufferAttribute(colors,3));blades.computeVertexNormals();const tuftMaterial=new T.MeshStandardMaterial({vertexColors:true,side:T.DoubleSide,roughness:1});scene.add(new T.Mesh(blades,tuftMaterial));
- return {rock,road,setStage(ash){floor.color.set(ash?0x716052:0xa4bd75);knoll.color.set(ash?0x887747:0x95bf53);tuftMaterial.color.set(ash?0x83724c:0xffffff);}};
+ return {bark,rock,road,setStage(ash){floor.color.set(ash?0x716052:0xa4bd75);knoll.color.set(ash?0x887747:0x95bf53);tuftMaterial.color.set(ash?0x83724c:0xffffff);}};
 }
