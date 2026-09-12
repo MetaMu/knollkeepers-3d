@@ -33,7 +33,7 @@ export function combatFX(scene,point,K,camera){
   // Reserve the unmistakable ultimate and channel effects before incidental impacts.
   renoRoots(game.ultimate,K,draw);
   for(const c of (game.conversions||[]).slice(0,8))spell({kind:'conversion',x:c.owner.x,y:c.owner.y,from:[c.owner.x,c.owner.y,1.2],to:[c.target.x,c.target.y,.8],age:2-c.left,life:2},clock,draw);
-  for(const e of game.enemies.filter(e=>e.slowUntil>game.time&&e.slow<1).slice(0,24))spell({kind:'frozen',x:e.x,y:e.y,age:.2,life:2,radius:28,from:[e.x,e.y,.15]},clock,draw);
+  for(const e of game.enemies.filter(e=>(e.slowUntil>game.time&&e.slow<1)||e.frozenUntil>game.time).slice(0,24))spell({kind:'frozen',x:e.x,y:e.y,age:.2,life:2,radius:28,from:[e.x,e.y,.15]},clock,draw);
   for(const e of [...game.projectiles,...game.effects].slice(-64))spell(anchors(e,game),clock,draw);
   for(const b of Object.values(batches)){b.mesh.instanceMatrix.needsUpdate=true;if(b.mesh.instanceColor)b.mesh.instanceColor.needsUpdate=true;b.alpha.needsUpdate=true;}
   title.style.display=game.ultimate?'block':'none';if(game.ultimate){title.firstElementChild.textContent=game.ultimate.age<1.45?'RENO MO':'THORN RECKONING';title.lastElementChild.textContent=game.ultimate.age<2?'The roots remember.':game.ultimate.hit.size+' / '+game.ultimate.targets.length+' enemies reclaimed by the roots';}

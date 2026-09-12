@@ -29,14 +29,14 @@
     const count = 7+n*2+(stage>=2?8:0), entries=[];
     for(let i=0;i<count;i++) entries.push({at:i*Math.max(.35,1.13-n*.035-(stage>=2?.2:0)),kind:n>=5&&i%5===4?'brute':n>=5&&i%6===3?'venom':n>=3&&i%4===2?'runner':'scout'});
     if(n===6||n===12||n===stageWaves(stage)||(stage>=2&&n%5===0))entries.push({at:count*.8,kind:'boss'});
-    return entries.sort((a,b)=>a.at-b.at);
+    return entries.map(e=>({...e,at:e.at*1.1})).sort((a,b)=>a.at-b.at);
   }
   const distance = (a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   const stats = t=>({damage:TYPES[t.type].damage*(1+(t.level-1)*.55),range:TYPES[t.type].range+(t.level-1)*18,interval:TYPES[t.type].interval/((t.type==='lady'||t.type==='phil')?1:1+(t.level-1)*.12)});
   const upgradeCost = t=>Math.round(TYPES[t.type].cost*(.75+t.level*.3));
   class Game {
     constructor(){this.reset();}
-    reset(){Object.assign(this,{gold:340,lives:20,stage:1,wave:0,kills:0,status:'build',time:0,waveTime:0,towers:[],enemies:[],projectiles:[],effects:[],events:[],queue:[],nextId:1,waveLeaks:0});}
+    reset(){Object.assign(this,{gold:340,lives:20,stage:1,wave:0,kills:0,status:'build',time:0,waveTime:0,towers:[],enemies:[],projectiles:[],effects:[],events:[],queue:[],nextId:1,waveLeaks:0,lastClear:null});}
     emit(type,data={}){this.events.push({type,...data});}
     place(type,pad){
       if(!TYPES[type]||(TYPES[type].unlock||1)>this.stage||!Number.isInteger(pad)||!PADS[pad]||this.towers.some(t=>t.pad===pad)||this.gold<TYPES[type].cost||['lost','won'].includes(this.status))return null;
@@ -47,7 +47,7 @@
     upgrade(id){const t=this.towers.find(t=>t.id===id);if(!t||t.level>=3||this.gold<upgradeCost(t)||['lost','won'].includes(this.status))return false;const cost=upgradeCost(t);this.gold-=cost;t.spent+=cost;t.level++;t.maxHp+=35;t.hp+=35;this.emit('upgraded',{tower:t});return true;}
     sell(id){const i=this.towers.findIndex(t=>t.id===id);if(i<0||['lost','won'].includes(this.status))return false;this.gold+=Math.floor(this.towers[i].spent*.7);this.towers.splice(i,1);return true;}
     startWave(){if(this.status!=='build'||this.wave>=stageWaves(this.stage))return false;this.wave++;this.waveTime=0;this.waveLeaks=0;this.queue=wavePlan(this.wave,this.stage);this.status='wave';this.emit('wave');return true;}
-    spawn(kind){const spec=ENEMIES[kind],hp=spec.hp*3*(1+(this.wave-1)*.2)*(this.stage===3?4.5:this.stage===2?3.4:1);const e={...spec,mutated:this.stage>=2,speed:spec.speed*(this.stage>=2?1.2:1),armor:Math.min(.65,spec.armor+(this.stage>=2?.12:0)),id:this.nextId++,kind,hp,maxHp:hp,progress:0,slowUntil:0,slow:0,poisonUntil:0,poisonDps:0,poisonOwner:null,...position(0)};this.enemies.push(e);return e;}
+    spawn(kind){const spec=ENEMIES[kind],hp=spec.hp*3*.9*1.28*(1+(this.wave-1)*.2)*(this.stage===3?4.5:this.stage===2?3.4:1);const e={...spec,mutated:this.stage>=2,speed:spec.speed*(this.stage>=2?1.2:1),armor:Math.min(.65,spec.armor+(this.stage>=2?.12:0)),id:this.nextId++,kind,hp,maxHp:hp,progress:0,slowUntil:0,slow:0,poisonUntil:0,poisonDps:0,poisonOwner:null,...position(0)};this.enemies.push(e);return e;}
     hurt(e,amount,owner,pierce=false){
       if(e.hp<=0)return;const damage=amount*(pierce?1:1-e.armor);if(owner)owner.damageDealt+=Math.min(e.hp,damage);e.hp-=damage;
       if(e.hp<=0){this.gold+=e.bounty;this.kills++;if(owner)owner.kills++;this.emit('kill',{x:e.x,y:e.y,bounty:e.bounty});this.effects.push({kind:e.slowUntil>this.time?'shatter':'burst',x:e.x,y:e.y-25,color:'#eac874',life:.45,age:0});}
@@ -85,8 +85,8 @@
       for(const e of this.enemies){
         if(e.hp<=0)continue;if(e.poisonUntil>this.time)this.hurt(e,e.poisonDps*dt*(e.kind==='venom'?.25:1),e.poisonOwner,true);if(e.hp<=0)continue;
         e.enraged=e.kind==='brute'&&e.hp<e.maxHp*.5;
-        e.progress+=e.speed*dt*(e.enraged?1.4:1)*(e.slowUntil>this.time?1-e.slow:1);Object.assign(e,position(e.progress));
-        if(e.kind==='venom'&&e.progress<pathLength){e.attackCooldown=(e.attackCooldown||0)-dt;const victim=this.towers.filter(t=>distance(e,t)<=155).sort((a,b)=>distance(e,a)-distance(e,b))[0];if(victim){victim.hp=Math.max(0,victim.hp-(e.mutated?27:18)*.25/1.3*dt);if(e.attackCooldown<=0){e.attackCooldown=1.3;this.effects.push({kind:'lightning',x:e.x,y:e.y-35,tx:victim.x,ty:victim.y-55,color:'#89ff43',life:.45,age:0});}this.emit('towerHit',{tower:victim});if(victim.hp===0){this.towers=this.towers.filter(t=>t!==victim);this.projectiles=this.projectiles.filter(p=>p.owner!==victim);this.effects.push({kind:'cannon',x:victim.x,y:victim.y-30,radius:45,color:'#89ff43',life:.8,age:0});this.emit('towerDestroyed',{tower:victim});}}}
+        e.progress+=(e.frozenUntil>this.time?0:e.speed)*dt*(e.enraged?1.4:1)*(e.slowUntil>this.time?1-e.slow:1);Object.assign(e,position(e.progress));
+        if(e.kind==='venom'&&!(e.frozenUntil>this.time)&&e.progress<pathLength){e.attackCooldown=(e.attackCooldown||0)-dt;const victim=this.towers.filter(t=>distance(e,t)<=155).sort((a,b)=>distance(e,a)-distance(e,b))[0];if(victim){victim.hp=Math.max(0,victim.hp-(e.mutated?27:18)*.25*1.1/1.3*dt);if(e.attackCooldown<=0){e.attackCooldown=1.3;this.effects.push({kind:'lightning',x:e.x,y:e.y-35,tx:victim.x,ty:victim.y-55,color:'#89ff43',life:.45,age:0});}this.emit('towerHit',{tower:victim});if(victim.hp===0){this.towers=this.towers.filter(t=>t!==victim);this.projectiles=this.projectiles.filter(p=>p.owner!==victim);this.effects.push({kind:'cannon',x:victim.x,y:victim.y-30,radius:45,color:'#89ff43',life:.8,age:0});this.emit('towerDestroyed',{tower:victim});}}}
         if(e.progress>=pathLength){e.hp=0;this.lives=Math.max(0,this.lives-e.leak);this.waveLeaks+=e.leak;this.emit('leak',{amount:e.leak});}
       }
       if(this.lives<=0){this.status='lost';this.emit('lost');return;}
@@ -95,9 +95,9 @@
       this.projectiles=this.projectiles.filter(p=>p.age<p.duration);
       this.enemies=this.enemies.filter(e=>e.hp>0);
       if(!this.queue.length&&!this.enemies.length){
-        const bonus=35+this.wave*5;this.gold+=bonus;this.projectiles=[];this.effects=[];
-        if(this.wave===stageWaves(this.stage)&&this.stage<3){const completedStage=this.stage;this.stage++;this.wave=0;this.lives=Math.min(20,this.lives+8);this.towers=[];this.status='build';this.emit('stage',{completedStage,gold:this.gold});}
-        else{this.status=this.wave===stageWaves(this.stage)?'won':'build';this.emit(this.status==='won'?'won':'cleared',{bonus,perfect:this.waveLeaks===0});}
+        const milestone=this.stage===1?(this.wave===5?500:this.wave===10?1000:0):0;const bonus=35+this.wave*5+milestone;this.lastClear={wave:this.wave,stage:this.stage,bonus,milestone};this.gold+=bonus;this.projectiles=[];this.effects=[];
+        if(this.wave===stageWaves(this.stage)&&this.stage<3){const completedStage=this.stage;this.stage++;this.wave=0;this.lives=Math.min(20,this.lives+8);this.towers=[];this.gold+=250;this.status='build';this.emit('stage',{completedStage,gold:this.gold,chapterBonus:250});}
+        else{this.status=this.wave===stageWaves(this.stage)?'won':'build';this.emit(this.status==='won'?'won':'cleared',{bonus,milestone,perfect:this.waveLeaks===0});}
       }
     }
   }
