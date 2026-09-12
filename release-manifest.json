@@ -8,8 +8,8 @@
     },
     {
       "file": "MAP-RELEASE.md",
-      "bytes": 4578,
-      "sha256": "2fe52c801c0e9293ef28fc3de06703fcd22ef1d6a540c6521bfd94e0b6d7808a"
+      "bytes": 4951,
+      "sha256": "febae191137a6cf9e9308a21ea70257e5619eced1278b6e07357ca8e0eff4172"
     },
     {
       "file": "README.md",
@@ -298,8 +298,8 @@
     },
     {
       "file": "gnome-garden.js",
-      "bytes": 8907,
-      "sha256": "9b2e7e57e52c21308859f2f608cba466f38d5ec9752c00176f2bcb08bfda470f"
+      "bytes": 9449,
+      "sha256": "00cff24a4d710d31465eeb67dde1e7b19fb58b648a4a1c773980d312a21523f7"
     },
     {
       "file": "gnome-main.png",
