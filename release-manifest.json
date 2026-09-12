@@ -8,8 +8,8 @@
     },
     {
       "file": "MAP-RELEASE.md",
-      "bytes": 2540,
-      "sha256": "cccb5ac5f097d7804e2e753df429c3e57326652cc5bc79b9f27190b0ebe10b1d"
+      "bytes": 3523,
+      "sha256": "35534ee01fab3cedf7d77d3e7750c267ee7564a2acdcaa1a49ff8c0da6cae12e"
     },
     {
       "file": "README.md",
@@ -263,8 +263,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 11773,
-      "sha256": "a3e20309f7d0f4be1cf1087e4913043b73b420fd307e6605f57920b907ef3e6c"
+      "bytes": 12031,
+      "sha256": "bfde584ef41fea2aafe52da30a269fccb902125bf49deb74995e3c8affb30bce"
     },
     {
       "file": "bestiary.html",
@@ -288,13 +288,18 @@
     },
     {
       "file": "environment-detail.js",
-      "bytes": 3640,
-      "sha256": "838c8b39912448fabee540acfd5df7f8546bf38cac174decf2023e38fc6e24d4"
+      "bytes": 3645,
+      "sha256": "df6bc866f4be0cb9c9ee7bef0e5702ba775ff7924edbf4970ab573dafaa698ce"
     },
     {
       "file": "game.js",
-      "bytes": 19116,
-      "sha256": "7617cb75575d24768eaa5ee358583821ce9f0558e58b6003c74fc83fbade82bd"
+      "bytes": 19134,
+      "sha256": "404c5b9844addccba1d9ab333088a933bfaf47662a7da60bb2b3563b02204ee8"
+    },
+    {
+      "file": "gnome-garden.js",
+      "bytes": 6148,
+      "sha256": "4219f7b2170165175b2a9695c5f3e37e3525dd534b9adddb0f15f4c1c2dca4a0"
     },
     {
       "file": "gnome-main.png",
@@ -303,8 +308,13 @@
     },
     {
       "file": "index.html",
-      "bytes": 6674,
-      "sha256": "07d6a1e67d4d829c5ef13fcc47dc6d8a671f7bded36f75d2155b6bad612994e4"
+      "bytes": 6724,
+      "sha256": "d1e20ca842ef461e2b1de04362144f751c5b24949ca874ff84f0c4e0ca5d64c1"
+    },
+    {
+      "file": "knoll-controls.css",
+      "bytes": 545,
+      "sha256": "eb4787a0a6276ff311bc22a466fc82960b8f7d0d0890603b0b8f6ed493fb5504"
     },
     {
       "file": "map-layout.js",
@@ -335,6 +345,11 @@
       "file": "tools/map.test.cjs",
       "bytes": 2135,
       "sha256": "3e540256ce75bdefcead14e0cae15899a58dc64fa86a43ae7fba1932c37606af"
+    },
+    {
+      "file": "tools/placement.test.cjs",
+      "bytes": 907,
+      "sha256": "1ead525f129b72f8077b93774cbf3cef9116b498dd01c0b66df63efac7a3da1f"
     },
     {
       "file": "vendor/three/LICENSE",
