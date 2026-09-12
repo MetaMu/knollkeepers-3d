@@ -4,7 +4,7 @@ import {clone} from './vendor/three/addons/utils/SkeletonUtils.js';
 import {OrbitControls} from './vendor/three/addons/controls/OrbitControls.js';
 import {groveTrees,vineFrames,pearShrine} from './gnome-garden.js';
 import {combatFX,eclipseSet} from './combat-fx-3d.js';
-import {detailEnvironment,KNOLL_HEIGHT} from './environment-detail.js';
+import {detailEnvironment,KNOLL_HEIGHT} from './environment-detail.js?v=1.2.6-stability';
 
 export async function load(K,oldCanvas,walks){
  const renderer=new T.WebGLRenderer({antialias:false,alpha:false,powerPreference:'default'});renderer.setPixelRatio(1);renderer.domElement.id='world';renderer.domElement.style.cssText='display:block;width:100%;aspect-ratio:3/2;touch-action:none';

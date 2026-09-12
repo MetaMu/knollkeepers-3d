@@ -9,6 +9,7 @@ Local browser checks: start screen displayed; 3D loaded; guardian placement and 
 ## Repairs
 
 - No automatic WebGL creation before the player chooses Enter 3D forest.
+- Public verification caught cached old JavaScript alongside the newly published page. Versioned script/style URLs and changed renderer-module URLs prevent reuse of those stale files for this release.
 - Removed the startup portrait renderer/import and duplicate portrait GLB loading. Existing character artwork remains in the roster; battlefield models are unchanged.
 - Stopped loading unused walk sprite sheets during 3D startup.
 - Added a separate no-WebGL compatibility renderer using the same simulation and rules. It intentionally uses simpler 2D art/symbols, not full 3D visuals. Use `?mode=safe`.

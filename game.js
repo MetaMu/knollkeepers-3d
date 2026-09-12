@@ -88,8 +88,8 @@
   document.addEventListener('keydown',event=>{if(!ready)event.stopImmediatePropagation();},true);
   function showFailure(error){console.error('Knoll startup/render failure',error);ready=false;paused=true;loading.hidden=false;loading.classList.add('failed');loading.querySelector('h2').textContent='The forest could not render.';loading.querySelector('p').textContent='Try Compatibility view below, or reload to retry 3D. '+(error?.message||'');$('#start3d').hidden=true;}
   async function start(safe){$('#start3d').disabled=true;loading.querySelector('p').textContent=safe?'Preparing compatibility view…':'Loading the 3D forest and guardians… Compatibility view is available below if loading stalls.';try{
-    if(safe){await loadAssets();const view=await import('./compatibility-view.js');battlefield=view.load(K,canvas,imgs);}
-    else{const terrain=await import('./battlefield-3d.js');battlefield=await terrain.load(K,canvas,walks);}
+    if(safe){await loadAssets();const view=await import('./compatibility-view.js?v=1.2.6-stability');battlefield=view.load(K,canvas,imgs);}
+    else{const terrain=await import('./battlefield-3d.js?v=1.2.6-stability');battlefield=await terrain.load(K,canvas,walks);}
     makeRoster();makePads();selectType('knowme');loading.hidden=true;ready=true;blocked.forEach(id=>$('#'+id).disabled=false);paint();updateUI();raf=requestAnimationFrame(loop);
     document.querySelector('#world')?.addEventListener('webglcontextlost',event=>{event.preventDefault();cancelAnimationFrame(raf);showFailure(new Error('The graphics connection was lost.'));});
   }catch(error){showFailure(error);}}
