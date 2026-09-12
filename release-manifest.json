@@ -1,5 +1,5 @@
 {
-  "version": "knoll-keepers-3d-1.2.3-balance",
+  "version": "knoll-keepers-3d-1.2.4-rewards",
   "files": [
     {
       "file": ".nojekyll",
@@ -478,8 +478,8 @@
     },
     {
       "file": "core.js",
-      "bytes": 11242,
-      "sha256": "a7640bda8c1e5e140edca8facb75c8351ccff315c742d83ee8a0c896c73fef36"
+      "bytes": 11304,
+      "sha256": "01c2c1309dac154345c4ea4fb4037dc41dc88cde26ca4f8f41074da6dc84128d"
     },
     {
       "file": "environment-detail.js",
@@ -503,8 +503,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 7374,
-      "sha256": "055689544daa56be8b67a6cd8122086eff5307d91db888f840901c341bcfd620"
+      "bytes": 7420,
+      "sha256": "5bed6dc3a504346edd8082c95e8809e280be4f29fdb7cb68321306ceafe4b8de"
     },
     {
       "file": "knoll-controls.css",
@@ -543,8 +543,8 @@
     },
     {
       "file": "tools/balance.test.cjs",
-      "bytes": 2390,
-      "sha256": "4af081759cb44856f4118b3d59b6906bca04a8addaaad895356d9a38f6882bf0"
+      "bytes": 2819,
+      "sha256": "c7e50b45375c647bcdd14ccd9987559e592c06babedf445fe27b06845af994d3"
     },
     {
       "file": "tools/chapter-rules.test.cjs",
@@ -645,6 +645,11 @@
       "file": "victory-scroll.js",
       "bytes": 1826,
       "sha256": "c0629720d3862f5bea3af0b9f0be353a7de1b9701a4a211e1664c618a412c42f"
+    },
+    {
+      "file": "wave-button.css",
+      "bytes": 1428,
+      "sha256": "b6b68501862cda8474a14f73f2171f03c5e3d06b0d5b250e838b437f31beedb7"
     }
   ]
 }
