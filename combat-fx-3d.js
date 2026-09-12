@@ -1,33 +1,44 @@
 import * as T from './vendor/three/three.module.js';
-export function combatFX(scene,point,K){
- const group=new T.Group();scene.add(group);const pool=[];
- const orbGeo=new T.IcosahedronGeometry(1,1),ringGeo=new T.TorusGeometry(1,.035,5,32),spikeGeo=new T.ConeGeometry(.1,1,5);
- for(let i=0;i<80;i++){
-  const g=new T.Group(),mat=new T.MeshBasicMaterial({transparent:true,depthWrite:false}),orb=new T.Mesh(orbGeo,mat),ring=new T.Mesh(ringGeo,mat),spikes=Array.from({length:6},()=>new T.Mesh(spikeGeo,mat));
-  const line=new T.Line(new T.BufferGeometry().setAttribute('position',new T.Float32BufferAttribute(new Float32Array(27),3)),new T.LineBasicMaterial({transparent:true,depthWrite:false}));line.frustumCulled=false;
-  g.add(orb,ring,...spikes);group.add(g,line);pool.push({g,mat,orb,ring,spikes,line});
+import {spell,anchors,renoRoots} from './spell-recipes-3d.js';
+export function combatFX(scene,point,K,camera){
+ const group=new T.Group();group.name='Named spell effects';scene.add(group);
+ const canvas=document.createElement('canvas');canvas.width=canvas.height=64;
+ const ctx=canvas.getContext('2d'),gradient=ctx.createRadialGradient(32,32,0,32,32,32);
+ gradient.addColorStop(0,'#ffffff');gradient.addColorStop(.12,'#ffffffdd');gradient.addColorStop(.4,'#ffffff44');gradient.addColorStop(1,'#ffffff00');ctx.fillStyle=gradient;ctx.fillRect(0,0,64,64);
+ const texture=new T.CanvasTexture(canvas),dummy=new T.Object3D(),color=new T.Color(),up=new T.Vector3(0,1,0),direction=new T.Vector3();
+ const batches={};
+ function batch(name,geometry,capacity,additive=false,map=null){
+  const alpha=new T.InstancedBufferAttribute(new Float32Array(capacity),1);alpha.setUsage(T.DynamicDrawUsage);geometry.setAttribute('fxAlpha',alpha);
+  const material=new T.MeshBasicMaterial({color:0xffffff,map,transparent:true,depthWrite:false,blending:additive?T.AdditiveBlending:T.NormalBlending,side:map?T.DoubleSide:T.FrontSide});
+  material.onBeforeCompile=s=>{s.vertexShader='attribute float fxAlpha; varying float vFxAlpha;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvFxAlpha = fxAlpha;');s.fragmentShader='varying float vFxAlpha;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.a *= vFxAlpha;');};
+  const mesh=new T.InstancedMesh(geometry,material,capacity);mesh.count=0;mesh.frustumCulled=false;mesh.instanceMatrix.setUsage(T.DynamicDrawUsage);group.add(mesh);batches[name]={mesh,alpha,capacity};return mesh;
  }
+ batch('glow',new T.PlaneGeometry(1,1),512,true,texture);
+ batch('shard',new T.OctahedronGeometry(1),512);
+ batch('leaf',new T.OctahedronGeometry(1),512);
+ batch('spike',new T.ConeGeometry(.5,1,5),128);
+ batch('smoke',new T.IcosahedronGeometry(1,1),256);
+ batch('ring',new T.TorusGeometry(1,.025,4,32),160,true);
+ batch('line',new T.CylinderGeometry(1,1,1,5),1536,true);
+ let dropped=0;
+ function put(type,c,a){const b=batches[type],i=b.mesh.count;if(i>=b.capacity){dropped++;return;}dummy.updateMatrix();b.mesh.setMatrixAt(i,dummy.matrix);b.mesh.setColorAt(i,color.set(c));b.alpha.setX(i,Math.max(0,Math.min(1,a)));b.mesh.count++;}
+ const draw={
+  dot(type,p,size,c,a,angle=0){if(a<=0)return;dummy.position.copy(point(p[0],p[1],p[2]));dummy.rotation.set(0,0,0);if(type==='glow')dummy.quaternion.copy(camera.quaternion);else if(type==='ring')dummy.rotation.x=-Math.PI/2;else dummy.rotation.z=angle;dummy.scale.set(...size);put(type,c,a);},
+  line(a,b,width,c,alpha){if(alpha<=0)return;const start=point(...a),end=point(...b);direction.subVectors(end,start);const length=direction.length();if(length<.0001)return;dummy.position.copy(start).add(end).multiplyScalar(.5);dummy.quaternion.setFromUnitVectors(up,direction.multiplyScalar(1/length));dummy.scale.set(width,length,width);put('line',c,alpha);}
+ };
+ const title=document.createElement('div');title.setAttribute('role','status');title.style.cssText='position:absolute;top:70px;left:15%;right:15%;text-align:center;pointer-events:none;color:#eef7c5;text-shadow:0 2px 8px #000;font:bold 22px Georgia;display:none';title.innerHTML='<span>RENO MO</span><small style="display:block;font:13px system-ui;margin-top:6px"></small>';document.querySelector('.arena')?.append(title);
  return {render(game){
-  const extra=[];
-  for(const c of game.conversions||[])extra.push({kind:'conversion',x:c.owner.x,y:c.owner.y,tx:c.target.x,ty:c.target.y,age:2-c.left,life:2,color:'#b48aff'});
-  if(game.ultimate){const age=game.ultimate.age,reach=Math.max(0,Math.min(1,(age-2)/2))*K.pathLength;for(let i=0;i<20;i++){const p=K.position(reach-i*27);if(reach>i*27)extra.push({kind:'thorns',...p,age:(age*.2+i*.03)% .8,life:.8,color:'#baff60'});}}
-  const active=[...game.projectiles,...game.effects,...extra].slice(-80);
-  pool.forEach((v,i)=>{
-   const e=active[i];v.g.visible=!!e;v.line.visible=false;if(!e)return;
-   const q=T.MathUtils.clamp((e.age||0)/(e.life||e.duration||1),0,1),a=point(e.x,e.y,.6),b=point(e.tx??e.x,e.ty??e.y,.6),color=e.color||'#b7ff90';
-   v.mat.color.set(color);v.mat.opacity=1-q*.8;v.g.position.copy(a);v.orb.visible=false;v.ring.visible=false;v.spikes.forEach(s=>s.visible=false);
-   if(e.duration){v.orb.visible=true;v.orb.scale.setScalar(e.kind==='sailor'?.12:.07);v.g.position.lerp(b,q);v.g.position.y+=(e.kind==='sailor'?Math.sin(q*Math.PI)*1.3:0);return;}
-   if(['beam','lightning','heal','conversion','muzzle'].includes(e.kind)){
-    v.line.visible=true;v.line.material.color.set(color);v.line.material.opacity=1-q*.7;const attr=v.line.geometry.attributes.position;
-    for(let j=0;j<9;j++){const p=a.clone().lerp(b,j/8);if(j>0&&j<8){if(e.kind==='lightning'){p.x+=Math.sin(j*9+game.time*19)*.13;p.y+=Math.cos(j*7)*.13;}else if(e.kind==='heal'||e.kind==='conversion')p.y+=Math.sin(j/8*Math.PI)*(.3+q*.5);}attr.setXYZ(j,p.x,p.y,p.z);}attr.needsUpdate=true;
-    v.g.position.copy(b);v.orb.visible=true;v.orb.scale.setScalar(e.kind==='beam'?.13:.07);
-   }else{
-    v.ring.visible=true;v.ring.rotation.x=-Math.PI/2;v.ring.scale.setScalar(.15+q*(e.radius||60)/50);v.g.position.copy(point(e.x,e.y,.1));
-    v.spikes.forEach((s,j)=>{s.visible=true;const angle=j*Math.PI/3+q;s.position.set(Math.cos(angle)*(.15+q*.7),.2+q*.35,Math.sin(angle)*(.15+q*.7));s.scale.setScalar(e.kind==='spores'?.1:.3+Math.sin(q*Math.PI)*.45);s.rotation.z=e.kind==='uppercut'?q*3:0;});
-    if(e.kind==='uppercut'){v.g.position.y+=q*1.4;v.ring.rotation.x=0;}
-   }
-  });
- }};
+  for(const b of Object.values(batches))b.mesh.count=0;dropped=0;
+  const clock=game.time+(game.ultimate?.age||0);
+  // Reserve the unmistakable ultimate and channel effects before incidental impacts.
+  renoRoots(game.ultimate,K,draw);
+  for(const c of (game.conversions||[]).slice(0,8))spell({kind:'conversion',x:c.owner.x,y:c.owner.y,from:[c.owner.x,c.owner.y,1.2],to:[c.target.x,c.target.y,.8],age:2-c.left,life:2},clock,draw);
+  for(const e of game.enemies.filter(e=>e.slowUntil>game.time&&e.slow<1).slice(0,24))spell({kind:'frozen',x:e.x,y:e.y,age:.2,life:2,radius:28,from:[e.x,e.y,.15]},clock,draw);
+  for(const e of [...game.projectiles,...game.effects].slice(-64))spell(anchors(e,game),clock,draw);
+  for(const b of Object.values(batches)){b.mesh.instanceMatrix.needsUpdate=true;if(b.mesh.instanceColor)b.mesh.instanceColor.needsUpdate=true;b.alpha.needsUpdate=true;}
+  title.style.display=game.ultimate?'block':'none';if(game.ultimate){title.firstElementChild.textContent=game.ultimate.age<1.45?'RENO MO':'THORN RECKONING';title.lastElementChild.textContent=game.ultimate.age<2?'The roots remember.':game.ultimate.hit.size+' / '+game.ultimate.targets.length+' enemies reclaimed by the roots';}
+  group.userData.activeInstances=Object.values(batches).reduce((n,b)=>n+b.mesh.count,0);group.userData.dropped=dropped;
+ },dispose(){title.remove();scene.remove(group);texture.dispose();for(const b of Object.values(batches)){b.mesh.geometry.dispose();b.mesh.material.dispose();b.mesh.dispose();}}};
 }
 export function eclipseSet(scene,point){
  const g=new T.Group();scene.add(g);const stone=new T.MeshStandardMaterial({color:0x39324d,roughness:.85}),crystal=new T.MeshStandardMaterial({color:0xc0a0ff,emissive:0x632bb3,emissiveIntensity:.65,roughness:.25,metalness:.25});
