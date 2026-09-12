@@ -7,7 +7,8 @@ import {combatFX,eclipseSet} from './combat-fx-3d.js';
 import {detailEnvironment,KNOLL_HEIGHT} from './environment-detail.js';
 
 export async function load(K,oldCanvas,walks){
- const renderer=new T.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(1);renderer.domElement.id='world';renderer.domElement.style.cssText='display:block;width:100%;aspect-ratio:3/2;touch-action:none';
+ const renderer=new T.WebGLRenderer({antialias:false,alpha:false,powerPreference:'default'});renderer.setPixelRatio(1);renderer.domElement.id='world';renderer.domElement.style.cssText='display:block;width:100%;aspect-ratio:3/2;touch-action:none';
+ try{
  const scene=new T.Scene();scene.background=new T.Color('#9cbbbd');scene.fog=new T.Fog('#9cbbbd',40,90);
  const camera=new T.PerspectiveCamera(42,1.5,.1,150),target=new T.Vector3(0,0,0);
  camera.position.set(0,23,25);camera.lookAt(target);const controls=new OrbitControls(camera,renderer.domElement);controls.target.copy(target);controls.enableDamping=true;controls.minDistance=6;controls.maxDistance=46;controls.minPolarAngle=.05;controls.maxPolarAngle=1.49;controls.enablePan=true;controls.panSpeed=.6;
@@ -33,7 +34,8 @@ export async function load(K,oldCanvas,walks){
  const resources={};for(const [name,model] of Object.entries(manifest.models)){const message=document.querySelector('#loading p');if(message)message.textContent='Bringing the 3D forest to life…';resources[name]=await loader.loadAsync('./assets/models/'+model.file);}
  const fx=combatFX(scene,point,K,camera),citadel=eclipseSet(scene,point);const units=new Map(),effects=new T.Group();scene.add(effects);let prevTime=0,previousStage=0;
  const hpGeo=new T.PlaneGeometry(1,.07),hpBack=new T.MeshBasicMaterial({color:0x182820,depthTest:false}),hpGreen=new T.MeshBasicMaterial({color:0xb9e78d,depthTest:false});
- function unit(entity,tower){const name=tower?entity.type:entity.kind==='demon'?'demon':entity.kind==='brute'?'hulk':['boss','venom'].includes(entity.kind)?entity.kind:'base',id=(tower?'t':'e')+entity.id,signature=name+Boolean(entity.mutated);let u=units.get(id);if(u?.signature===signature)return u;if(u){scene.remove(u.group);u.mixer?.uncacheRoot(u.model);u.ownedMaterials?.forEach(m=>m.dispose());if(u.frames){u.model.material.map.dispose();u.model.material.dispose();}units.delete(id);}
+ function releaseUnit(u){scene.remove(u.group);u.mixer?.stopAllAction();u.mixer?.uncacheRoot(u.model);const skeletons=new Set();u.model.traverse(o=>{if(o.skeleton)skeletons.add(o.skeleton);});skeletons.forEach(s=>s.dispose());u.ownedMaterials?.forEach(m=>m.dispose());}
+ function unit(entity,tower){const name=tower?entity.type:entity.kind==='demon'?'demon':entity.kind==='brute'?'hulk':['boss','venom'].includes(entity.kind)?entity.kind:'base',id=(tower?'t':'e')+entity.id,signature=name+Boolean(entity.mutated);let u=units.get(id);if(u?.signature===signature)return u;if(u){releaseUnit(u);units.delete(id);}
   const group=new T.Group();let model,mixer,animations;
   {const asset=resources[name];model=clone(asset.scene);const bounds=new T.Box3().setFromObject(model),size=bounds.getSize(new T.Vector3()),center=bounds.getCenter(new T.Vector3()),scale=(tower?1.65:1.35*entity.size)/size.y;model.scale.setScalar(scale);model.position.set(-center.x*scale,-bounds.min.y*scale,-center.z*scale);group.add(model);mixer=new T.AnimationMixer(model);animations=asset.animations;u={group,model,mixer,animations};}
   // Mutated flocks share the articulated walk, with instance-owned enchanted materials.
@@ -52,7 +54,7 @@ export async function load(K,oldCanvas,walks){
    if(u.mixer){const clip=tower?(e.recoil>0||e.castUntil>game.time?'cast':'idle'):'walk_stopmotion';if(u.clip!==clip){u.mixer.stopAllAction();const a=u.animations.find(a=>a.name.toLowerCase()===clip);if(a)u.mixer.clipAction(a).reset().play();u.clip=clip;u.animationTime=.125;}u.animationTime=(u.animationTime||0)+dt;if(u.animationTime>=.125){u.mixer.update(e.frozenUntil>game.time?0:u.animationTime);u.animationTime=0;}}
    else{const f=Math.floor(e.progress/10+e.id)%4;if(f!==u.frame){u.model.material.map.image=u.frames[f];u.model.material.map.needsUpdate=true;u.frame=f;}}
   }
-  for(const [id,u] of units)if(!seen.has(id)){scene.remove(u.group);u.mixer?.uncacheRoot(u.model);u.ownedMaterials?.forEach(m=>m.dispose());if(u.frames){u.model.material.map.dispose();u.model.material.dispose();}units.delete(id);}
+  for(const [id,u] of units)if(!seen.has(id)){releaseUnit(u);units.delete(id);}
   fx.render(game);
   ring.visible=!!selectedTower;if(selectedTower){ring.position.copy(point(selectedTower.x,selectedTower.y,.08));ring.scale.setScalar(K.stats(selectedTower).range/50);}
   controls.update();camera.updateMatrixWorld();for(const [i,{p,number}] of pads.entries()){number.visible=!game.towers.some(t=>t.pad===i);const projected=point(p.x,p.y,KNOLL_HEIGHT+.1).project(camera),button=document.querySelector(`[data-pad="${i}"]`);if(button){button.hidden=projected.z>1||projected.z< -1;const edge=point(p.x+35,p.y,KNOLL_HEIGHT).project(camera),diameter=Math.max(30,Math.min(70,Math.abs(edge.x-projected.x)*renderer.domElement.clientWidth));button.style.width=diameter+'px';button.style.height=diameter+'px';button.textContent=String(i+1);button.style.left=(projected.x*.5+.5)*100+'%';button.style.top=(-projected.y*.5+.5)*100+'%';}}
@@ -64,4 +66,5 @@ export async function load(K,oldCanvas,walks){
  const reset=document.createElement('button');reset.textContent='Reset view';reset.style.cssText='width:auto;padding:0 10px;white-space:nowrap';reset.onclick=()=>{camera.position.set(0,23,25);controls.target.copy(target);controls.update();};document.querySelector('.map-controls').append(reset);
  const note=document.createElement('span');note.textContent='Drag 360° · Right-drag to pan · Scroll to zoom';note.style.cssText='position:absolute;bottom:91px;right:14px;color:#fff7ce;font:11px system-ui;pointer-events:none';oldCanvas.parentElement.append(note);
  return {render};
+ }catch(error){renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();oldCanvas.style.display='block';throw error;}
 }

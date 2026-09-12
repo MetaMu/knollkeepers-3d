@@ -1,10 +1,12 @@
 import * as T from './vendor/three/three.module.js';
 export const KNOLL_HEIGHT=.38;
 export async function detailEnvironment(scene,environment,K,point,renderer){
- const loader=new T.TextureLoader();
+ const loader=new T.TextureLoader(),textureSets=new Map();
  async function material(asset,color,repeat=1){
   const names=asset==='forest_leaves_02'?['diffuse','nor_gl','rough']:['diff','nor_gl','rough'];
-  const maps=await Promise.all(names.map(n=>loader.loadAsync('./assets/environment/textures/'+asset+'_'+n+'_1k.jpg')));
+  const key=asset+':'+repeat;
+  if(!textureSets.has(key))textureSets.set(key,Promise.all(names.map(n=>loader.loadAsync('./assets/environment/textures/'+asset+'_'+n+'_1k.jpg'))));
+  const maps=await textureSets.get(key);
   maps.forEach((t,i)=>{t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(repeat,repeat);t.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());if(i===0)t.colorSpace=T.SRGBColorSpace;});
   return new T.MeshStandardMaterial({map:maps[0],normalMap:maps[1],roughnessMap:maps[2],normalScale:new T.Vector2(.45,.45),color,roughness:1});
  }
