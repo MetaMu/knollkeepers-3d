@@ -1,5 +1,5 @@
 {
-  "version": "knoll-keepers-3d-1.2.0-expansion",
+  "version": "knoll-keepers-3d-1.2.1-motion",
   "files": [
     {
       "file": ".nojekyll",
@@ -17,6 +17,11 @@
       "sha256": "febae191137a6cf9e9308a21ea70257e5619eced1278b6e07357ca8e0eff4172"
     },
     {
+      "file": "MOTION-RELEASE.md",
+      "bytes": 1272,
+      "sha256": "f56cb11b118feab7d768a112eb2592d7cccfd85eac2f42fb20d6bd2b7758a7d2"
+    },
+    {
       "file": "README.md",
       "bytes": 1073,
       "sha256": "9d43bbf167af9d9199529478ad9d45afdb05539a04f826e5c9a16da6506a8e38"
@@ -30,6 +35,56 @@
       "file": "assets/CREDITS.md",
       "bytes": 1539,
       "sha256": "525a2051e6a70b07fd782ea4bf9d463d33cde21e475c11780d6aaf55482ba292"
+    },
+    {
+      "file": "assets/actions/base.gif",
+      "bytes": 162884,
+      "sha256": "14a84ae473d1986fcbeffcf9c0b2fe2983cff1a02a84318fce22fd5b45f29759"
+    },
+    {
+      "file": "assets/actions/boss.gif",
+      "bytes": 216516,
+      "sha256": "89945cbb758d0840e5a1f1f88bfd0d0f648f5957ee894f31ca9ea625b88db043"
+    },
+    {
+      "file": "assets/actions/demon-action.gif",
+      "bytes": 165229,
+      "sha256": "18ab4329bad8217e61544def4b78f35be1847b9218ac91488d376632abc9c4ce"
+    },
+    {
+      "file": "assets/actions/demon-v3.gif",
+      "bytes": 225722,
+      "sha256": "74137bc8df11951dbd9e3357162c7f13da593c4b2d573f4dcad10187bbe0a98b"
+    },
+    {
+      "file": "assets/actions/hulk.gif",
+      "bytes": 208211,
+      "sha256": "c8423affc54aef431c56701a99ebc6ca8c0b444ffc254ae8cf7a21885f9d989b"
+    },
+    {
+      "file": "assets/actions/lady.gif",
+      "bytes": 177094,
+      "sha256": "404bf869896036c76b8dca7a71ec6692f9661096081d4049799bfb19626f90f8"
+    },
+    {
+      "file": "assets/actions/manifest.json",
+      "bytes": 2844,
+      "sha256": "bfa5c99d154b3a771155b6869b8c9dd49bd78fffe05ff67fd6459c2d5a2c3392"
+    },
+    {
+      "file": "assets/actions/phil.gif",
+      "bytes": 172714,
+      "sha256": "43e93639747d50a42bf440724764848374ee7f1ba30cd2043d69140a6ab25406"
+    },
+    {
+      "file": "assets/actions/reno.gif",
+      "bytes": 202094,
+      "sha256": "0777af06f945a45b6a2badedd00d574153303888b2a40de4b4e8c714ad91572d"
+    },
+    {
+      "file": "assets/actions/venom.gif",
+      "bytes": 186039,
+      "sha256": "78386e9bddf2eecf59dc9325894d28a213e701e7f1e1af77d020109af7188703"
     },
     {
       "file": "assets/audio/CREDITS.md",
@@ -217,14 +272,29 @@
       "sha256": "433380efc3eca51cb850d99bf4797f13a0984fe69f3d32873c571b5473dda1e3"
     },
     {
+      "file": "assets/models/base-v2.glb",
+      "bytes": 1790820,
+      "sha256": "a9b6ee26250978162c2478f9238a223eaf4208ed2bb1fa6bb1d9df362d2bfb4f"
+    },
+    {
       "file": "assets/models/base.glb",
       "bytes": 1788640,
       "sha256": "48ad0d7696a8c301e0e417881f6287b097486e0e80efd499ab17bc08c9a6b3d8"
     },
     {
+      "file": "assets/models/boss-v2.glb",
+      "bytes": 1843060,
+      "sha256": "d072256391a9942cbd0d8f14c8567fe2f489a28cd3f1481191eea3bb4fc51c4f"
+    },
+    {
       "file": "assets/models/boss.glb",
       "bytes": 1841408,
       "sha256": "c81899a94044c97e582867c93fadd8cd2c267915a633220e20304d1850500f2f"
+    },
+    {
+      "file": "assets/models/demon-v3.glb",
+      "bytes": 3020920,
+      "sha256": "33320eacd29439681c3fdeb99b20915d2f246dd51e237334cf1ee2085b2aa6c3"
     },
     {
       "file": "assets/models/demon.glb",
@@ -240,6 +310,11 @@
       "file": "assets/models/host.glb",
       "bytes": 1718444,
       "sha256": "a477fcc4b37ff80d0969d0bf1551d45ee76310950f87602bb024f13df93680a9"
+    },
+    {
+      "file": "assets/models/hulk-v2.glb",
+      "bytes": 1750372,
+      "sha256": "05963f80f9f10b5c1c0a1af3ea26d0380fe2e40e296f1a980997faad144f36a8"
     },
     {
       "file": "assets/models/hulk.glb",
@@ -263,8 +338,8 @@
     },
     {
       "file": "assets/models/manifest.json",
-      "bytes": 5484,
-      "sha256": "9ff6429fda797fc673d9c1b2a4712b00c84fa61c702f3600b6e77fd807d31d9f"
+      "bytes": 6625,
+      "sha256": "7019fe134e74c75113c512834fcb7f0b403ab87341cf2cdcaf1fe8cfda610ca4"
     },
     {
       "file": "assets/models/phil.glb",
@@ -280,6 +355,11 @@
       "file": "assets/models/sailor.glb",
       "bytes": 1790376,
       "sha256": "e12f8e8acb73adce0c61cd288ef71ec9cde1c2969832433f05b9a0988f1720d2"
+    },
+    {
+      "file": "assets/models/venom-v2.glb",
+      "bytes": 1801508,
+      "sha256": "9c0f2f0bd030d2e22d474dc38a3ffdf9f799f0adfc33406bb00d6064a0475442"
     },
     {
       "file": "assets/models/venom.glb",
@@ -348,8 +428,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 12488,
-      "sha256": "e993ff7067f72b1511cdec9386747f04804cbb9d916df35c9bca2aad64c7cd58"
+      "bytes": 12680,
+      "sha256": "ae17816ac7a734768cd4708f4a8a5c032d8fdc4c37e8825df444cb2bc0ad9a6a"
     },
     {
       "file": "bestiary.html",
@@ -370,6 +450,16 @@
       "file": "campaign.js",
       "bytes": 5553,
       "sha256": "9219df53885fcef18c00fece1949ba9902dd34321bbd4d06673cd50d919a4393"
+    },
+    {
+      "file": "character-viewer.html",
+      "bytes": 3424,
+      "sha256": "aae55fc1362fc43825d59b3b61b182d69da5a7222c787f3d0159587d41f1a1ac"
+    },
+    {
+      "file": "character-viewer.js",
+      "bytes": 5245,
+      "sha256": "8a035d3f681e5ff0d7d945d7bf5f8518aecfa14c01d2648696606a229b73316d"
     },
     {
       "file": "combat-fx-3d.js",
@@ -403,8 +493,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 7077,
-      "sha256": "8f73f875832a4b038c52f3fdf7b8bc2a6795f6f1fbcbb61c8192b4f6112f9856"
+      "bytes": 7164,
+      "sha256": "a97569b6c05d132e91b3a0dcbda3255cdc4bdcd3ba259742760af54520c272c5"
     },
     {
       "file": "knoll-controls.css",
@@ -437,14 +527,39 @@
       "sha256": "22bece8cb9e987b9c486345fa7e660bfdf43acd67475918bf5244b13595c62c6"
     },
     {
+      "file": "tools/deliver-motion.cjs",
+      "bytes": 2368,
+      "sha256": "fb2eacdae4025c1f1bcae2038195c06e4b530ca3bbf059e999b570465a41aa70"
+    },
+    {
       "file": "tools/expansion-runtime.test.cjs",
-      "bytes": 3067,
-      "sha256": "a6dd981e9a9440b66009b083e085cb767a5a0adee8fa6e232261ac76abe33ebb"
+      "bytes": 3098,
+      "sha256": "672837d61b899fe4c6456644cab3a12f82f7cf57dca04c432e46cbbb553f4014"
+    },
+    {
+      "file": "tools/finish-motion.py",
+      "bytes": 10435,
+      "sha256": "dba98c4c7cf7786580763999b7c39cd0039fa455cc0edd05fe058600e8a84037"
     },
     {
       "file": "tools/map.test.cjs",
       "bytes": 2136,
       "sha256": "7593a9c5054798658531b630cf34cd57472ddec3066b5dd06b451df2dde03094"
+    },
+    {
+      "file": "tools/motion.test.cjs",
+      "bytes": 2720,
+      "sha256": "3e2cdebfb3ab00dbc16dd7f3ea0d152cb614a0c8524a8243818b2e5f6dd63719"
+    },
+    {
+      "file": "tools/pack-motion.cjs",
+      "bytes": 3173,
+      "sha256": "d1effae28e33682281909632721f83b385128b9db4e12336655e194a285b0900"
+    },
+    {
+      "file": "tools/package-demon-v3.cjs",
+      "bytes": 1610,
+      "sha256": "2c1435026dc8df5fd0e8387bf1a1d0a8ce6dade2fbc000e7ce38c5f669730df8"
     },
     {
       "file": "tools/placement.test.cjs",
