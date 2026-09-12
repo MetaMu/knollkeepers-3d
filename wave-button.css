@@ -1,0 +1,10 @@
+/* 1.5× the previous 11px label and 12px vertical padding; keep panel width. */
+#waveBtn{position:relative;isolation:isolate;overflow:hidden;padding:18px 19.5px;font-size:16.5px;line-height:1.2;font-weight:800;letter-spacing:.2px;border:2px solid #d6a641;border-radius:10px;background:linear-gradient(120deg,#ffe9a0,#edbd54 55%,#ffdf81);color:#243719;box-shadow:0 4px 0 #9b732b,0 0 18px #edbd5440;text-align:center;transition:filter .2s,box-shadow .2s;}
+#waveBtn:not(:disabled){animation:wave-ready-glow 2.4s ease-in-out infinite;cursor:pointer;}
+#waveBtn:not(:disabled)::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 25%,#fff9 45%,transparent 65%);transform:translateX(-140%);animation:wave-ready-shine 4.8s ease-in-out infinite;pointer-events:none;}
+#waveBtn:focus-visible{outline:3px solid #365d40;outline-offset:5px;}
+#waveBtn:not(:disabled):active{box-shadow:0 1px 0 #9b732b;}
+#waveBtn:disabled{animation:none;background:#e0e3d5;border-color:#bdc6ad;color:#707966;box-shadow:none;cursor:default;}
+@keyframes wave-ready-glow{0%,100%{box-shadow:0 4px 0 #9b732b,0 0 12px #edbd5440}50%{box-shadow:0 4px 0 #9b732b,0 0 24px #eab84299}}
+@keyframes wave-ready-shine{0%,60%{transform:translateX(-140%)}85%,100%{transform:translateX(140%)}}
+@media(prefers-reduced-motion:reduce){#waveBtn:not(:disabled),#waveBtn:not(:disabled)::before{animation:none}#waveBtn{transition:none}}
