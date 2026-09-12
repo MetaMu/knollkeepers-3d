@@ -1,5 +1,5 @@
 {
-  "version": "knoll-keepers-3d-1.0.0",
+  "version": "knoll-keepers-3d-1.1.0-terrain",
   "files": [
     {
       "file": ".nojekyll",
@@ -7,9 +7,14 @@
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     {
+      "file": "MAP-RELEASE.md",
+      "bytes": 1859,
+      "sha256": "e9f5d4418124008a75a68afd93770a085b63777fd99ddb3c9b255ee95a531dee"
+    },
+    {
       "file": "README.md",
-      "bytes": 972,
-      "sha256": "7e7208d7c66b1789d14a9c6fa2447bec8c425876f1366a4e882b1423d10350c6"
+      "bytes": 1073,
+      "sha256": "9d43bbf167af9d9199529478ad9d45afdb05539a04f826e5c9a16da6506a8e38"
     },
     {
       "file": "RELEASE-3D.md",
@@ -40,6 +45,21 @@
       "file": "assets/audio/magical.ogg",
       "bytes": 59071,
       "sha256": "119f9061a566c72c1c58444b03f8685b833079ef268dda02fe742eb34d3bc68f"
+    },
+    {
+      "file": "assets/environment/forest.glb",
+      "bytes": 251348,
+      "sha256": "017cf4ffc80c7ec5b38bad8cd3fa65f4c7ad08d57038f9460edb999b6411bb24"
+    },
+    {
+      "file": "assets/environment/provenance.json",
+      "bytes": 516,
+      "sha256": "6cc7c089e148dbbc71cc5cd4c1fcc1e89c9616c0e632d58d0c3d6a4ed2e26fef"
+    },
+    {
+      "file": "assets/environment/terrain.json",
+      "bytes": 102679,
+      "sha256": "de1183282a38b71352181cb0de0bdd21651b9b76bd388ee243d3f0f28fe6ced0"
     },
     {
       "file": "assets/fordenad.webp",
@@ -172,6 +192,11 @@
       "sha256": "8b95d244201970c77182faeadc388bcc042ec52f50d7251c1dbf3c5e737bf6cc"
     },
     {
+      "file": "battlefield-3d.js",
+      "bytes": 12426,
+      "sha256": "55d3064fffbe14c83a120d6d9fbc15abcaa2f2fe1603cd38e72391d7d789f340"
+    },
+    {
       "file": "bestiary.html",
       "bytes": 1474,
       "sha256": "1ca918988064e66615b254b745f1b537e77e272b579a9148b096c3e323a1b1e6"
@@ -188,13 +213,13 @@
     },
     {
       "file": "core.js",
-      "bytes": 10070,
-      "sha256": "a46684d00021a0c282a61b10b3bca4d55338b12e8849e90697f7af9bd0509ee2"
+      "bytes": 9705,
+      "sha256": "5b6c92fc3aa8a004f07bc8fb01136b3d6f30904c3c727e6351c71dee537ea9e4"
     },
     {
       "file": "game.js",
-      "bytes": 18921,
-      "sha256": "8c0e2c455a882cddc597de5032d9f216a2a088180a5538c4fc7f829df1ce9b07"
+      "bytes": 19120,
+      "sha256": "a15b7ec6ab0f51ce60eccec0a88e38201a8c1518ba461a2297758369b7311dac"
     },
     {
       "file": "gnome-main.png",
@@ -203,13 +228,18 @@
     },
     {
       "file": "index.html",
-      "bytes": 6343,
-      "sha256": "d0fe0eb2cadc1e39ea1b8c3df63bc8d14134182daadeccaad59811203db5da68"
+      "bytes": 6674,
+      "sha256": "07d6a1e67d4d829c5ef13fcc47dc6d8a671f7bded36f75d2155b6bad612994e4"
+    },
+    {
+      "file": "map-layout.js",
+      "bytes": 990,
+      "sha256": "832bf82f797286d3e9938dadb8a3f36ec7f1aa226e1099262dd4475cc17676af"
     },
     {
       "file": "model-renderer.js",
-      "bytes": 3176,
-      "sha256": "8d2b03f9ffa2b28e27e5dc3aa9fff066d812f3a3f9df2796b3311cdc7ccc601b"
+      "bytes": 3346,
+      "sha256": "f9bd9107c8a9aab3881c8950a848dacf228fa6e46900c712404da978739f0f88"
     },
     {
       "file": "rooster.png",
@@ -227,9 +257,19 @@
       "sha256": "22bece8cb9e987b9c486345fa7e660bfdf43acd67475918bf5244b13595c62c6"
     },
     {
+      "file": "tools/map.test.cjs",
+      "bytes": 2135,
+      "sha256": "3e540256ce75bdefcead14e0cae15899a58dc64fa86a43ae7fba1932c37606af"
+    },
+    {
       "file": "vendor/three/LICENSE",
       "bytes": 1081,
       "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "file": "vendor/three/addons/controls/OrbitControls.js",
+      "bytes": 38703,
+      "sha256": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
     },
     {
       "file": "vendor/three/addons/loaders/GLTFLoader.js",
@@ -240,6 +280,11 @@
       "file": "vendor/three/addons/utils/BufferGeometryUtils.js",
       "bytes": 35539,
       "sha256": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+    },
+    {
+      "file": "vendor/three/addons/utils/SkeletonUtils.js",
+      "bytes": 11062,
+      "sha256": "0761b1e003917b215d25dd81439d854b36034b5a57ce84c2cfe3b02428d7b253"
     },
     {
       "file": "vendor/three/three.core.js",
