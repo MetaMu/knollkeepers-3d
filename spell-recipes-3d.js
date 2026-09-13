@@ -9,6 +9,11 @@ export function spell(e,clock,draw){
  const line=(p,r,w,c,alpha=fade)=>draw.line(p,r,w,c,alpha);
  const ring=(p,size,c,alpha=fade)=>dot('ring',p,size,c,alpha);
  const lerp=(u,v,f)=>u.map((x,i)=>x+(v[i]-x)*f);
+ if(e.kind==='cleanse'||e.kind==='queenPulse'||e.kind==='reverse'||e.kind==='volleyAura'){
+  const c=e.color||'#ffe9a1';ring([a[0],a[1],.18],(e.radius||60)/50*(.3+q),c,fade*.7);glow(a,1.4,c,fade*.3);
+  for(let i=0;i<8;i++){const angle=i*TAU/8+clock,r=20+q*45;dot('shard',[a[0]+Math.cos(angle)*r,a[1]+Math.sin(angle)*r,.5+q],.12,c,fade,[1,2,1],angle);}
+  return;
+ }
  if(e.duration){
   const color=e.kind==='knowme'?'#75cfff':e.kind==='sailor'?'#ff8c37':'#88ed53';
   const at=f=>{const p=lerp(a,b,f);p[2]+=e.kind==='sailor'?Math.sin(f*Math.PI)*1.3:0;return p;};
@@ -67,6 +72,7 @@ export function anchors(e,game){
 
 export function renoRoots(u,K,draw){
  if(!u)return;const t=u.age,reach=clamp((t-2)/2)*K.pathLength,fade=Math.min(1,(4.5-t)*2);
+ for(let i=0;i<12;i++){const a=i*TAU/12,x=600+Math.cos(a)*95,y=510+Math.sin(a)*95;draw.dot('smoke',[x,y,.25],[.32,.5,.32],'#807b64',fade,0);draw.dot('shard',[x,y,.65],[.1,.2,.1],'#b9ef78',fade,a);if(i%2===0)draw.line([x,y,.7],[600+Math.cos(a+TAU/3)*95,510+Math.sin(a+TAU/3)*95,.7],.02,'#a2dc68',fade*.35);}
  if(t<2.1){draw.dot('glow',[600,510,1.4],[4,4,4],'#a2dc68',.3,0);draw.dot('ring',[600,510,.15],[1+t*.8,1+t*.8,1],'#c5df83',.65,0);}
  for(let p=0;p<reach;p+=24){const a=K.position(p),b=K.position(Math.min(reach,p+24));for(const [w,c] of [[.16,'#253c16'],[.065,'#abd36d']])draw.line([a.x,a.y,.18],[b.x,b.y,.18],w,c,fade);if(p%48===0)draw.dot('spike',[a.x,a.y,.43],[.28,.75,.28],'#abca6b',fade,p*.3);}
  if(reach>0){const p=K.position(reach);draw.dot('glow',[p.x,p.y,.55],[1.8,1.8,1.8],'#a4e960',.8,0);}

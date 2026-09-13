@@ -1,5 +1,5 @@
 import * as T from './vendor/three/three.module.js';
-import {spell,anchors,renoRoots} from './spell-recipes-3d.js';
+import {spell,anchors,renoRoots} from './spell-recipes-3d.js?v=1.2.7-powers-port1';
 export function combatFX(scene,point,K,camera){
  const group=new T.Group();group.name='Named spell effects';scene.add(group);
  const canvas=document.createElement('canvas');canvas.width=canvas.height=64;
@@ -32,6 +32,16 @@ export function combatFX(scene,point,K,camera){
   const clock=game.time+(game.ultimate?.age||0);
   // Reserve the unmistakable ultimate and channel effects before incidental impacts.
   renoRoots(game.ultimate,K,draw);
+  for(const b of (game.hellfire||[]).slice(0,40)){const e=b.target;if(e.hp<=0)continue;const q=1-b.left/b.total;spell({kind:'sailor',duration:b.total,age:b.total-b.left,from:[e.x,e.y,5],to:[e.x,e.y,.5]},clock,draw);}
+  for(const a of (game.volley||[]).slice(0,40))spell({kind:'fordenad',duration:.6,age:.6-a.left,from:[a.x,a.y,1.4],to:[a.target.x,a.target.y,.6]},clock,draw);
+  for(const e of game.enemies.slice(0,40)){
+   if(e.reverseUntil>game.time)spell({kind:'reverse',x:e.x,y:e.y,age:.2,life:1,color:'#c99bff',radius:30},clock,draw);
+   if(e.volleyLeft>0)spell({kind:'volleyAura',x:e.x,y:e.y,age:.2,life:1,color:'#a2ef66',radius:25},clock,draw);
+  }
+  for(const t of game.towers){
+   if(t.frozenUntil>game.time)spell({kind:'frozen',x:t.x,y:t.y,age:.2,life:1,radius:30},clock,draw);
+   if(t.hexUntil>game.time||t.poisonWardUntil>game.time)spell({kind:'queenPulse',x:t.x,y:t.y,age:.2,life:1,color:t.hexUntil>game.time?'#f07aff':'#ffe9a1',radius:30},clock,draw);
+  }
   for(const c of (game.conversions||[]).slice(0,8))spell({kind:'conversion',x:c.owner.x,y:c.owner.y,from:[c.owner.x,c.owner.y,1.2],to:[c.target.x,c.target.y,.8],age:2-c.left,life:2},clock,draw);
   for(const e of game.enemies.filter(e=>(e.slowUntil>game.time&&e.slow<1)||e.frozenUntil>game.time).slice(0,24))spell({kind:'frozen',x:e.x,y:e.y,age:.2,life:2,radius:28,from:[e.x,e.y,.15]},clock,draw);
   for(const e of [...game.projectiles,...game.effects].slice(-64))spell(anchors(e,game),clock,draw);
