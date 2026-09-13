@@ -1,5 +1,5 @@
 {
-  "version": "knoll-keepers-3d-1.2.6-stability",
+  "version": "knoll-keepers-3d-1.2.7-powers",
   "files": [
     {
       "file": ".nojekyll",
@@ -20,6 +20,11 @@
       "file": "CATCHUP-RELEASE.md",
       "bytes": 1065,
       "sha256": "c89df0353e23b76a7247a96b8116e5eed91e5b310204ca3027cf3732e6b9b734"
+    },
+    {
+      "file": "CURRENT-2D-PORT.md",
+      "bytes": 4788,
+      "sha256": "39a75b7171cbf28796376dd4811cff55380fd6ec78434210a411534d067e21cb"
     },
     {
       "file": "EXPANSION-RELEASE.md",
@@ -448,8 +453,8 @@
     },
     {
       "file": "battlefield-3d.js",
-      "bytes": 13299,
-      "sha256": "9a2af685cc8761b6494709e3e4a4d3fa48bcc2e21f44e16e63459809159d6905"
+      "bytes": 13704,
+      "sha256": "e002900e1e7df7f8c26ca4d3c955b1e5e63d1e3532639da39e8e179bc9a67e3a"
     },
     {
       "file": "bestiary.html",
@@ -473,8 +478,8 @@
     },
     {
       "file": "campaign.js",
-      "bytes": 5980,
-      "sha256": "fe79699619005dfc244821e0bda57a99f34875c58c4f5f937cc241c8e4350bd3"
+      "bytes": 9617,
+      "sha256": "f7180dd1987a5594369b8658a85c885fad36bb10caeaa229ecbf7408f1186f98"
     },
     {
       "file": "character-viewer.html",
@@ -488,18 +493,18 @@
     },
     {
       "file": "combat-fx-3d.js",
-      "bytes": 6011,
-      "sha256": "b85b612157104a24264075fde3cd3c5924e53676833f33379645d82d49b2e24a"
+      "bytes": 7001,
+      "sha256": "a91f9dc0d3d520b5db41dfc5657667e9c5a354f554e574b7021535c37716c1ba"
     },
     {
       "file": "compatibility-view.js",
-      "bytes": 2005,
-      "sha256": "96e121348c373ebfad9843da6d78d9a0f84ae92858f10b0dbdb8df3e120f98a1"
+      "bytes": 2657,
+      "sha256": "fedd31b0275314f32971a7c328a0f1260c501d507c05f2966b96a14ef2abf36e"
     },
     {
       "file": "core.js",
-      "bytes": 11325,
-      "sha256": "6e6053cf0ec01eb566097eb44e0add5033a0554ead2372249373b42de81181dd"
+      "bytes": 14556,
+      "sha256": "45fe05f810a0edc12e3ef19151f97be22989d54957079d9a27e0033c199c6868"
     },
     {
       "file": "environment-detail.js",
@@ -508,8 +513,8 @@
     },
     {
       "file": "game.js",
-      "bytes": 22982,
-      "sha256": "056bb402f0feb03d9a0185f7328fe1e71c1391c0ff9b4155857e4db823bdc9de"
+      "bytes": 26004,
+      "sha256": "07afa243716928f6111296704cc9ac7c31190896de331053972720a590ac3eb7"
     },
     {
       "file": "gnome-garden.js",
@@ -523,13 +528,13 @@
     },
     {
       "file": "index.html",
-      "bytes": 7803,
-      "sha256": "faeb536c84816780603b4d3800a277add7b746e93235c07add221be7d3346341"
+      "bytes": 8111,
+      "sha256": "de196dfece6c456e519374f51501f369e0c3d54a1376b0e61590801569c04e62"
     },
     {
       "file": "knoll-controls.css",
-      "bytes": 545,
-      "sha256": "eb4787a0a6276ff311bc22a466fc82960b8f7d0d0890603b0b8f6ed493fb5504"
+      "bytes": 1760,
+      "sha256": "a84377572c689677c00883103789d224cf93a4ed0d8886fdeb83c830f5cac4fa"
     },
     {
       "file": "map-layout.js",
@@ -548,8 +553,8 @@
     },
     {
       "file": "spell-recipes-3d.js",
-      "bytes": 6355,
-      "sha256": "e4c7b1d799e9c5048f618592dbb0de6bc99b7717e4b1f1fb79304857e4df3eb5"
+      "bytes": 7027,
+      "sha256": "104158813f25022b1a5ab72a7dd83346129e057c2b41bf0b94f1b5be447d0931"
     },
     {
       "file": "sprite.js",
@@ -568,13 +573,23 @@
     },
     {
       "file": "tools/catchup.test.cjs",
-      "bytes": 1785,
-      "sha256": "dc5e5f60ce3d2b05fc09e58702ebfdd35303cc7e1709fb9769eeadca65ae5289"
+      "bytes": 1788,
+      "sha256": "326b56cb381e4e9205e551deda13393ad8113f66b8eba0376c9bf85226c5be3f"
     },
     {
       "file": "tools/chapter-rules.test.cjs",
       "bytes": 1623,
       "sha256": "b0a442929a8b0c1fe1d2ca186a08f8e9a46fd48131f5b2625a824a6da70ec951"
+    },
+    {
+      "file": "tools/cleanse-current.test.cjs",
+      "bytes": 1955,
+      "sha256": "eab5f64275aed2d4546a790c876ce1904a938256996ef67b2fd1bc89ba47350f"
+    },
+    {
+      "file": "tools/current-port.test.cjs",
+      "bytes": 4271,
+      "sha256": "d22b3bd19dd6f2dbcdb858efd29418dd468af24ce3499e7d650280536e49d486"
     },
     {
       "file": "tools/deliver-motion.cjs",
@@ -598,8 +613,8 @@
     },
     {
       "file": "tools/magic.test.cjs",
-      "bytes": 1989,
-      "sha256": "280a9974b776506357504403e20da8583924a892ab8fe4d0ba833ecb8e5cd1b7"
+      "bytes": 2035,
+      "sha256": "02e29803516426885851680e3057835c4971c1653e82972e2ba4d5ac2ccc7398"
     },
     {
       "file": "tools/map.test.cjs",
@@ -628,8 +643,8 @@
     },
     {
       "file": "tools/stability.test.cjs",
-      "bytes": 1911,
-      "sha256": "8335a32d656c461f1e2188ff5af57f1b43ddca7b1b54971213fa831446d56d23"
+      "bytes": 1908,
+      "sha256": "6fb8e0579800d59ae2c37ddfb4668c32fd7d0cbc294ae673c66149d70cf1282d"
     },
     {
       "file": "vendor/three/LICENSE",
